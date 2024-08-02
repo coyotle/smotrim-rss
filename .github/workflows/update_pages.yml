@@ -53,6 +53,9 @@ jobs:
         run: python main.py
       # end create RSS
 
+      - name: Update jsons for React
+        run: sh get_json.sh
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
