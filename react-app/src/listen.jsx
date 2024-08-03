@@ -78,7 +78,7 @@ const Listen = () => {
       {episodes.length <= 0 ? (
         <div className="py-4">Нет данных для отображения</div>
       ) : (
-        <div className="text-left">
+        <div className="text-left min-w-[320px]">
           <h2 className="text-3xl py-4">{episodes[0].title}</h2>
           <img
             src={episodes[0].player.preview.source.main}

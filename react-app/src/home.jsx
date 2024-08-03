@@ -47,7 +47,7 @@ const Home = () => {
       </div>
       <div className="text-left p-6 mb-4 bg-orange-100 rounded-md">
         <p className="mb-2 flex items-center space-x-1">
-          <Github />
+          <Github className="min-w-[24px]" />
           &nbsp;
           <span>
             Наш проект теперь с открытым кодом! Можете использовать или внести
@@ -63,7 +63,7 @@ const Home = () => {
           </span>
         </p>
         <p className="mb-2 flex items-center space-x-1">
-          <Heart /> &nbsp;
+          <Heart className="min-w-[24px]" /> &nbsp;
           <span>
             Вы можете{" "}
             <a
@@ -78,7 +78,7 @@ const Home = () => {
           </span>
         </p>
         <p className="mb-2 flex items-center space-x-1">
-          <MessageCircle /> &nbsp;
+          <MessageCircle className="min-w-[24px]" /> &nbsp;
           <span>
             Поделитесь своими мыслями, пожеланиями, предложениями&nbsp;
             <a
