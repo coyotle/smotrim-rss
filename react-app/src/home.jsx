@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button } from "./components/ui/button";
-import { Link } from "react-router-dom";
-import { Github, Heart, MessageCircle, Play, RssIcon } from "lucide-react";
+import { Github, Heart, MessageCircle } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
 } from "./components/ui/breadcrumb";
+import PodcastCard from "./components/podcastcard";
 
 const Home = () => {
   const [podcasts, setPodcasts] = useState([]);
@@ -30,8 +29,6 @@ const Home = () => {
     getData();
   }, []);
 
-  if (podcasts.length == 0) return <>No data</>;
-  console.log("podcasts: ", podcasts);
   return (
     <div>
       <Breadcrumb>
@@ -93,29 +90,18 @@ const Home = () => {
           </span>
         </p>
       </div>
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-4">
-        {podcasts.map((item) => (
-          <div
-            key={item.brand_id ? item.brand_id : item.rubric_id}
-            className="shadow-lg mb-3 text-left flex flex-col rounded-md overflow-hidden"
-          >
-            <img src={item.image} />
-            <div className="p-4">{item.description}</div>
-            <div className="flex justify-between mt-auto pb-4 mx-4">
-              <Link to={item.listen_url}>
-                <Button>
-                  <Play /> Слушать
-                </Button>
-              </Link>
-              <a href={item.feed} target="_blank" rel="noopener noreferrer">
-                <Button>
-                  <RssIcon />
-                </Button>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+      {podcasts.length <= 0 ? (
+        <div>Нет данных для отображения</div>
+      ) : (
+        <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-4">
+          {podcasts.map((item) => (
+            <PodcastCard
+              key={item.brand_id ? item.brand_id : item.rubric_id}
+              info={item}
+            />
+          ))}
+        </div>
+      )}
       <div className="text-left pt-6">
         Мы не несем ответственности за содержание материалов и не храним их у
         себя. Представленные ленты являются "прокси" для оригинальных материалов
