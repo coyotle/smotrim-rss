@@ -229,3 +229,11 @@ stations:
         website: https://smotrim.ru/brand/62250
         feed: docs/mayak/62250.xml
         image: https://rss.coyotle.ru/images/mayak/62250_v1.jpg
+
+      - title: Белая студия
+        description: "Ведущая Дарья Златопольская ведет разговор с приглашенным деятелем культуры о значимых для собеседника произведениях искусства, повлиявших на становление его как личности."
+        brand_id: 60200
+        category: Society & Culture
+        website: https://smotrim.ru/brand/60200
+        feed: docs/mayak/60200.xml
+        image: https://rss.coyotle.ru/images/mayak/60200_v1.jpg
