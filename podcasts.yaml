@@ -1,167 +1,231 @@
-- title: Железная логика
-  description: 'Аргументы, с которыми невозможно спорить. Факты, которые расставят все на свои места. Безотказный механизм мышления. Снимаем розовые очки и расстаемся с иллюзиями в программе "Железная логика" с Сергеем Михеевым.'
-  brand_id: 61016
-  website: https://smotrim.ru/brand/61016
-  feed: docs/zheleznaya.xml
-  image: https://rss.coyotle.ru/images/61016_v1.jpg
+stations:
+  - name: Вести ФМ
+    id: 1
+    website: https://smotrim.ru/radiovesti
+    podcasts:
+      - title: Железная логика
+        description: 'Аргументы, с которыми невозможно спорить. Факты, которые расставят все на свои места. Безотказный механизм мышления. Снимаем розовые очки и расстаемся с иллюзиями в программе "Железная логика" с Сергеем Михеевым.'
+        brand_id: 61016
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/61016
+        feed: docs/zheleznaya.xml
+        image: https://rss.coyotle.ru/images/61016_v1.jpg
 
-- title: Формула смысла
-  description: 'Мир сошел с ума? Возможно. Но даже самым безумным событиям и явлениям найдется разумное объяснение. Смысл есть, его не может не быть. Новое прочтение знакомых сюжетов. Трактовки. Интерпретации. Толкования. Что происходит и как это понимать?! Утреннее шоу "Формула смысла" с Дмитрием Куликовым.'
-  brand_id: 61007
-  website: https://smotrim.ru/brand/61007
-  feed: docs/formula.xml
-  image: https://rss.coyotle.ru/images/61007_v1.jpg
+      - title: Формула смысла
+        description: 'Мир сошел с ума? Возможно. Но даже самым безумным событиям и явлениям найдется разумное объяснение. Смысл есть, его не может не быть. Новое прочтение знакомых сюжетов. Трактовки. Интерпретации. Толкования. Что происходит и как это понимать?! Утреннее шоу "Формула смысла" с Дмитрием Куликовым.'
+        brand_id: 61007
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/61007
+        feed: docs/formula.xml
+        image: https://rss.coyotle.ru/images/61007_v1.jpg
 
-- title: Американские горки
-  description: 'Как быть если: вы уверены, что всё зависит только от вас; вам кажется, что вы самые умные; всё обязано идти по вашему плану; вы всегда должны быть правы; у вас огромное эго, и вы – страна. США: что бывает, когда пытаешься контролировать весь мир. Политическая жизнь Штатов – внутри и за пределами. "Американские горки" с Дмитрием Дробницким. Приготовьтесь, будет трясти!'
-  brand_id: 63263
-  website: https://smotrim.ru/brand/63263
-  feed: docs/amgorki.xml
-  image: https://rss.coyotle.ru/images/63263_v1.jpg
+      - title: Американские горки
+        description: 'Как быть если: вы уверены, что всё зависит только от вас; вам кажется, что вы самые умные; всё обязано идти по вашему плану; вы всегда должны быть правы; у вас огромное эго, и вы – страна. США: что бывает, когда пытаешься контролировать весь мир. Политическая жизнь Штатов – внутри и за пределами. "Американские горки" с Дмитрием Дробницким. Приготовьтесь, будет трясти!'
+        brand_id: 63263
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/63263
+        feed: docs/amgorki.xml
+        image: https://rss.coyotle.ru/images/63263_v1.jpg
 
-- title: Еврозона
-  description: "Авторская программа писателя и публициста Владимира Сергиенко."
-  brand_id: 62139
-  website: https://smotrim.ru/brand/62139
-  feed: docs/eurozone.xml
-  image: https://rss.coyotle.ru/images/62139_v1.jpg
+      - title: Еврозона
+        description: "Авторская программа писателя и публициста Владимира Сергиенко."
+        brand_id: 62139
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/62139
+        feed: docs/eurozone.xml
+        image: https://rss.coyotle.ru/images/62139_v1.jpg
 
-- title: Бывшие
-  description: "Следим за тем, что происходит на постсоветском пространстве. По субботам после 18 часов."
-  brand_id: 62046
-  website: https://smotrim.ru/brand/62046
-  feed: docs/former.xml
-  image: https://rss.coyotle.ru/images/62046_v1.jpg
+      - title: Бывшие
+        description: "Следим за тем, что происходит на постсоветском пространстве. По субботам после 18 часов."
+        brand_id: 62046
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/62046
+        feed: docs/former.xml
+        image: https://rss.coyotle.ru/images/62046_v1.jpg
 
-- title: Параллели
-  description: "Взгляд в настоящее через призму прошлого с Арменом Гаспаряном."
-  brand_id: 61175
-  website: https://smotrim.ru/brand/61175
-  feed: docs/paralleli.xml
-  image: https://rss.coyotle.ru/images/61175_v1.jpg
+      - title: Параллели
+        description: "Взгляд в настоящее через призму прошлого с Арменом Гаспаряном."
+        brand_id: 61175
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/61175
+        feed: docs/paralleli.xml
+        image: https://rss.coyotle.ru/images/61175_v1.jpg
 
-- title: Восточная шкатулка
-  description: "Восток – дело тонкое: зачастую всё не так, как кажется на первый взгляд. Восточную шкатулку с секретами попробуем разгадать с Алексеем Масловым."
-  brand_id: 62186
-  website: https://smotrim.ru/brand/62186
-  feed: docs/vshkatulka.xml
-  image: https://rss.coyotle.ru/images/62186_v1.jpg
+      - title: Восточная шкатулка
+        description: "Восток – дело тонкое: зачастую всё не так, как кажется на первый взгляд. Восточную шкатулку с секретами попробуем разгадать с Алексеем Масловым."
+        brand_id: 62186
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/62186
+        feed: docs/vshkatulka.xml
+        image: https://rss.coyotle.ru/images/62186_v1.jpg
 
-- title: Нацвопрос
-  description: "Завернутый в лаваш Восток, увлеченный амбициями Запад, преданный первобытности Юг, приученный к процветанию Север. Отправляйтесь на все четыре стороны вместе с Маратом Сафаровым."
-  brand_id: 61015
-  website: "https://smotrim.ru/brand/61015"
-  feed: docs/natsvopros.xml
-  image: https://rss.coyotle.ru/images/61015_v1.jpg
+      - title: Нацвопрос
+        description: "Завернутый в лаваш Восток, увлеченный амбициями Запад, преданный первобытности Юг, приученный к процветанию Север. Отправляйтесь на все четыре стороны вместе с Маратом Сафаровым."
+        brand_id: 61015
+        category: News
+        sub_category: Politics
+        website: "https://smotrim.ru/brand/61015"
+        feed: docs/natsvopros.xml
+        image: https://rss.coyotle.ru/images/61015_v1.jpg
 
-- title: Поворот на Восток
-  description: "Ветер перемен дует с Востока: Азия становится ключевой геополитической частью света. Как будет выглядеть новый многополярный мир и какое место в нём займёт Россия? Поворачиваем на Восток вместе с китаеведом, публицистом Николаем Вавиловым."
-  brand_id: 68525
-  website: https://smotrim.ru/brand/68525
-  feed: docs/povorotnavostok.xml
-  image: https://rss.coyotle.ru/images/68525_v1.jpg
+      - title: Поворот на Восток
+        description: "Ветер перемен дует с Востока: Азия становится ключевой геополитической частью света. Как будет выглядеть новый многополярный мир и какое место в нём займёт Россия? Поворачиваем на Восток вместе с китаеведом, публицистом Николаем Вавиловым."
+        brand_id: 68525
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/68525
+        feed: docs/povorotnavostok.xml
+        image: https://rss.coyotle.ru/images/68525_v1.jpg
 
-- title: Иллюзия власти
-  description: "Авторская программа политолога, кандидата политических наук, члена-корреспондента Академии военных наук Сергея Судакова."
-  brand_id: 67761
-  website: https://smotrim.ru/brand/67761
-  feed: docs/illusion.xml
-  image: https://rss.coyotle.ru/images/67761_v1.jpg
+      - title: Иллюзия власти
+        description: "Авторская программа политолога, кандидата политических наук, члена-корреспондента Академии военных наук Сергея Судакова."
+        brand_id: 67761
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/67761
+        feed: docs/illusion.xml
+        image: https://rss.coyotle.ru/images/67761_v1.jpg
 
-- title: Турецкий хаб
-  description: "Еженедельная программа о том, что происходит в Турции и вокруг нее с Иваном Стародубцевым."
-  brand_id: 69703
-  website: https://smotrim.ru/brand/69703
-  feed: docs/turhub.xml
-  image: https://rss.coyotle.ru/images/69703_v1.jpg
+      - title: Турецкий хаб
+        description: "Еженедельная программа о том, что происходит в Турции и вокруг нее с Иваном Стародубцевым."
+        brand_id: 69703
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/69703
+        feed: docs/turhub.xml
+        image: https://rss.coyotle.ru/images/69703_v1.jpg
 
-- title: Дни и ночи войны
-  description: "Истории подвигов и преодолений на фронте и в тылу в специальном проекте Андрея Светенко."
-  brand_id: 69811
-  website: https://smotrim.ru/brand/69811
-  feed: docs/69811.xml
-  image: https://rss.coyotle.ru/images/69811_v1.jpg
+      - title: Дни и ночи войны
+        description: "Истории подвигов и преодолений на фронте и в тылу в специальном проекте Андрея Светенко."
+        brand_id: 69811
+        category: History
+        website: https://smotrim.ru/brand/69811
+        feed: docs/69811.xml
+        image: https://rss.coyotle.ru/images/69811_v1.jpg
 
-- title: Наша Арктика
-  description: "Программа о самом холодном регионе России, где решаются самые горячие проблемы современного мира с Маратом Сафаровым."
-  brand_id: 69169
-  website: https://smotrim.ru/brand/69169
-  feed: docs/69169.xml
-  image: https://rss.coyotle.ru/images/69169_v1.jpg
+      - title: Наша Арктика
+        description: "Программа о самом холодном регионе России, где решаются самые горячие проблемы современного мира с Маратом Сафаровым."
+        brand_id: 69169
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/69169
+        feed: docs/69169.xml
+        image: https://rss.coyotle.ru/images/69169_v1.jpg
 
-- title: Штатный корреспондент
-  description: "Наблюдаем за политической жизнью США. Валентин Богданов про Америку из Америки."
-  brand_id: 66024
-  website: https://smotrim.ru/brand/66024
-  feed: docs/66024.xml
-  image: https://rss.coyotle.ru/images/66024_v1.jpg
+      - title: Штатный корреспондент
+        description: "Наблюдаем за политической жизнью США. Валентин Богданов про Америку из Америки."
+        brand_id: 66024
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/66024
+        feed: docs/66024.xml
+        image: https://rss.coyotle.ru/images/66024_v1.jpg
 
-- title: Угол зрения
-  description: 'Иногда лучшее, что можно сделать, – посмотреть на ситуацию под другим углом. Увидеть новое в привычном! Программа, где ценят особенный взгляд на жизнь, непростые темы, нетривиальные ходы, неожиданные выводы. "Угол зрения" с Алексеем Мартыновым.'
-  brand_id: 69014
-  website: https://smotrim.ru/brand/69014
-  feed: docs/69014.xml
-  image: https://rss.coyotle.ru/images/69014_v1.jpg
+      - title: Угол зрения
+        description: 'Иногда лучшее, что можно сделать, – посмотреть на ситуацию под другим углом. Увидеть новое в привычном! Программа, где ценят особенный взгляд на жизнь, непростые темы, нетривиальные ходы, неожиданные выводы. "Угол зрения" с Алексеем Мартыновым.'
+        brand_id: 69014
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/69014
+        feed: docs/69014.xml
+        image: https://rss.coyotle.ru/images/69014_v1.jpg
 
-- title: Соловьёв LIVE
-  description: "В прямом эфире – новости и размышления, прямые включения корреспондентов, обсуждение повестки с признанными экспертами из разных областей."
-  brand_id: 66924
-  website: https://smotrim.ru/brand/66924
-  feed: docs/66924.xml
-  image: https://rss.coyotle.ru/images/66924_v1.jpg
+      - title: Соловьёв LIVE
+        description: "В прямом эфире – новости и размышления, прямые включения корреспондентов, обсуждение повестки с признанными экспертами из разных областей."
+        brand_id: 66924
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/66924
+        feed: docs/66924.xml
+        image: https://rss.coyotle.ru/images/66924_v1.jpg
 
-- title: Традиции
-  description: "Мы много говорим о политике, деньгах, конфликтах. А на самом деле человек живет более простыми и глубокими вещами. Возвращаемся к традиционным ценностям с Сергеем Михеевым."
-  brand_id: 64392
-  website: https://smotrim.ru/brand/64392
-  feed: docs/64392.xml
-  image: https://rss.coyotle.ru/images/64392_v1.jpg
+      - title: Традиции
+        description: "Мы много говорим о политике, деньгах, конфликтах. А на самом деле человек живет более простыми и глубокими вещами. Возвращаемся к традиционным ценностям с Сергеем Михеевым."
+        brand_id: 64392
+        category: Society & Culture
+        sub_category: Philosophy
+        website: https://smotrim.ru/brand/64392
+        feed: docs/64392.xml
+        image: https://rss.coyotle.ru/images/64392_v1.jpg
 
-- title: Поле Куликова
-  description: 'Авторский стрим Дмитрия Куликова в программе "Соловьёв LIVE"'
-  rubric_id: 7261
-  website: https://smotrim.ru/podcast/7261
-  feed: docs/polekulikova.xml
-  image: https://rss.coyotle.ru/images/7261_v1.jpg
+      - title: Поле Куликова
+        description: 'Авторский стрим Дмитрия Куликова в программе "Соловьёв LIVE"'
+        rubric_id: 7261
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/podcast/7261
+        feed: docs/polekulikova.xml
+        image: https://rss.coyotle.ru/images/7261_v1.jpg
 
-- title: Альтера Парс
-  description: "У каждого режима – свой темперамент: от государств-экстравертов до стран-флегматиков. У каждого строя – своя натура: одни руководствуются логикой, другими управляют эмоции. Изучим их поведение, измерим самооценку. Психология международных отношений с Марией Киселевой."
-  brand_id: 60977
-  website: https://smotrim.ru/brand/60977
-  feed: docs/60977.xml
-  image: https://rss.coyotle.ru/images/60977_v1.jpg
+      - title: Альтера Парс
+        description: "У каждого режима – свой темперамент: от государств-экстравертов до стран-флегматиков. У каждого строя – своя натура: одни руководствуются логикой, другими управляют эмоции. Изучим их поведение, измерим самооценку. Психология международных отношений с Марией Киселевой."
+        brand_id: 60977
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/60977
+        feed: docs/60977.xml
+        image: https://rss.coyotle.ru/images/60977_v1.jpg
 
-- title: Большой формат
-  description: 'Основные события дня – в репортажах корреспондентов "Вестей ФМ" и комментариях экспертов.'
-  brand_id: 62330
-  website: https://smotrim.ru/brand/62330
-  feed: docs/62330.xml
-  image: https://rss.coyotle.ru/images/62330_v1.jpg
+      - title: Большой формат
+        description: 'Основные события дня – в репортажах корреспондентов "Вестей ФМ" и комментариях экспертов.'
+        brand_id: 62330
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/62330
+        feed: docs/62330.xml
+        image: https://rss.coyotle.ru/images/62330_v1.jpg
 
-- title: Внешний контур
-  description: "Внешний контур с Иваном Стародубцевым."
-  brand_id: 70198
-  website: https://smotrim.ru/brand/70198
-  feed: docs/70198.xml
-  image: https://rss.coyotle.ru/images/70198_v1.jpg
+      - title: Внешний контур
+        description: "Внешний контур с Иваном Стародубцевым."
+        brand_id: 70198
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/70198
+        feed: docs/70198.xml
+        image: https://rss.coyotle.ru/images/70198_v1.jpg
 
-- title: Энергономика
-  description: "Газ-батюшка и нефть-матушка: доходчивый анализ ситуации на рынке энергетики."
-  brand_id: 68185
-  website: https://smotrim.ru/brand/68185
-  feed: docs/68185.xml
-  image: https://rss.coyotle.ru/images/68185_v1.jpg
+      - title: Энергономика
+        description: "Газ-батюшка и нефть-матушка: доходчивый анализ ситуации на рынке энергетики."
+        brand_id: 68185
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/68185
+        feed: docs/68185.xml
+        image: https://rss.coyotle.ru/images/68185_v1.jpg
 
-- title: Дневной рубеж
-  description: "Уже не начало, ещё не конец: кульминация информационного эфира. Добавляем штрихи там, где их не хватает. Ставим точки там, где они необходимы. Из фрагментов составляем целое. Из частностей формулируем общее. О том, что уже произошло сегодня и что ещё произойдёт. Держим “Дневной рубеж”."
-  brand_id: 65871
-  website: https://smotrim.ru/brand/65871
-  feed: docs/65871.xml
-  image: https://rss.coyotle.ru/images/65871_v1.jpg
+      - title: Дневной рубеж
+        description: "Уже не начало, ещё не конец: кульминация информационного эфира. Добавляем штрихи там, где их не хватает. Ставим точки там, где они необходимы. Из фрагментов составляем целое. Из частностей формулируем общее. О том, что уже произошло сегодня и что ещё произойдёт. Держим “Дневной рубеж”."
+        brand_id: 65871
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/65871
+        feed: docs/65871.xml
+        image: https://rss.coyotle.ru/images/65871_v1.jpg
 
-- title: Информбистро
-  description: 'От российского "Информбистро"! Главные события в стране и мире, ключевые заявления мировых лидеров и комментарии экспертов. Подводим итоги недели с Русланом Быстровым и Николаем Осиповым.'
-  brand_id: 61029
-  website: https://smotrim.ru/brand/61029
-  feed: docs/61029.xml
-  image: https://rss.coyotle.ru/images/61029_v1.jpg
+      - title: Информбистро
+        description: 'От российского "Информбистро"! Главные события в стране и мире, ключевые заявления мировых лидеров и комментарии экспертов. Подводим итоги недели с Русланом Быстровым и Николаем Осиповым.'
+        brand_id: 61029
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/61029
+        feed: docs/61029.xml
+        image: https://rss.coyotle.ru/images/61029_v1.jpg
+
+  - name: Маяк
+    id: 2
+    website: https://smotrim.ru/radiomayak
+    podcasts:
+      - title: Физики и лирики
+        description: "Дневное шоу физика Александра Пушного и лирика Маргариты Митрофановой."
+        brand_id: 62250
+        category: Society & Culture
+        website: https://smotrim.ru/brand/62250
+        feed: docs/mayak/62250.xml
+        image: https://rss.coyotle.ru/images/mayak/62250_v1.jpg

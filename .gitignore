@@ -37,3 +37,4 @@ venv/
 
 
 **/data/*/*.json
+docs/**/*.xml
