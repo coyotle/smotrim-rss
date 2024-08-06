@@ -245,3 +245,11 @@ stations:
         website: https://smotrim.ru/brand/58219
         feed: docs/mayak/58219.xml
         image: https://rss.coyotle.ru/images/mayak/58219_v1.jpg
+
+      - title: Трудности перехода
+        description: "Если вы обнаружили, что стали родителем подростка, и теперь вас раздражает собственный ребёнок… Если не осталось терпения и слов… Если перед вами раскрывается пугающая бездна… Выключите эмоции и включите «Маяк». Новая интерактивная программа «Трудности перехода» с подростковым психологом Никитой Карповым."
+        brand_id: 69881
+        category: Society & Culture
+        website: https://smotrim.ru/brand/69881
+        feed: docs/mayak/69881.xml
+        image: https://rss.coyotle.ru/images/mayak/69881_v1.jpg
