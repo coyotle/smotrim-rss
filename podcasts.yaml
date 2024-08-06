@@ -253,3 +253,11 @@ stations:
         website: https://smotrim.ru/brand/69881
         feed: docs/mayak/69881.xml
         image: https://rss.coyotle.ru/images/mayak/69881_v1.jpg
+
+      - title: Хорошо темперированный эфир
+        description: 'Взаимодействие музыки и человека – это улица с двусторонним движением. Говорим об этом через призму времени, историй, культуры и науки. Внимание: ваш "слушательский опыт" не будет прежним!'
+        brand_id: 67656
+        category: Society & Culture
+        website: https://smotrim.ru/brand/67656
+        feed: docs/mayak/67656.xml
+        image: https://rss.coyotle.ru/images/mayak/67656_v1.jpg
