@@ -237,3 +237,11 @@ stations:
         website: https://smotrim.ru/brand/60200
         feed: docs/mayak/60200.xml
         image: https://rss.coyotle.ru/images/mayak/60200_v1.jpg
+
+      - title: Сергей Стиллавин и его друзья
+        description: "Неукротимая бригада Сергея Стиллавина обсуждает со слушателями актуальные события, тестирует автомобили, разоблачает бренды, пытается понять психологию мужчин и женщин, и делает ещё много чего увлекательного!"
+        brand_id: 58219
+        category: Society & Culture
+        website: https://smotrim.ru/brand/58219
+        feed: docs/mayak/58219.xml
+        image: https://rss.coyotle.ru/images/mayak/58219_v1.jpg
