@@ -56,6 +56,7 @@ python main.py
 #### Маяк
 
 - [Белая студия](https://rss.coyotle.ru/mayak/60200.xml)
+- [Пойми себя, если сможешь](https://rss.coyotle.ru/mayak/64495.xml)
 - [Сергей Стиллавин и его друзья](https://rss.coyotle.ru/mayak/58219.xml)
 - [Трудности перехода](https://rss.coyotle.ru/mayak/69881.xml)
 - [Физики и лирики](https://rss.coyotle.ru/mayak/62250.xml)
