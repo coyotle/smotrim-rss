@@ -261,3 +261,11 @@ stations:
         website: https://smotrim.ru/brand/67656
         feed: docs/mayak/67656.xml
         image: https://rss.coyotle.ru/images/mayak/67656_v1.jpg
+
+      - title: Пойми себя, если сможешь
+        description: "Подкаст о смысле жизни. С Артёмом Новиченковым и Владиславом Тимкиным."
+        brand_id: 64495
+        category: Society & Culture
+        website: https://smotrim.ru/brand/64495
+        feed: docs/mayak/64495.xml
+        image: https://rss.coyotle.ru/images/mayak/64495_v1.jpg
