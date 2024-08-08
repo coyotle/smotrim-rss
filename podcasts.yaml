@@ -269,3 +269,11 @@ stations:
         website: https://smotrim.ru/brand/64495
         feed: docs/mayak/64495.xml
         image: https://rss.coyotle.ru/images/mayak/64495_v1.jpg
+
+      - title: МузДок
+        description: "Программа Игоря Ружейникова для тех, кто готов вспомнить что-то интересное и важное. Не просто вспомнить — обсудить и послушать музыку того периода."
+        brand_id: 65317
+        category: Society & Culture
+        website: https://smotrim.ru/brand/65317
+        feed: docs/mayak/65317.xml
+        image: https://rss.coyotle.ru/images/mayak/65317_v1.jpg
