@@ -237,7 +237,10 @@ def main():
 
     for station in stations_data.stations:
         logger.info(f"- {station.name}")
-        create_station_feeds(station)
+        try:
+            create_station_feeds(station)
+        except Exception as e:
+            logger.error(f'Can`t create feed for "{station.name}": {e}')
 
 
 if __name__ == "__main__":
