@@ -65,16 +65,16 @@ const Home = () => {
         <p className="mb-2 flex items-center space-x-1">
           <Heart className="min-w-[24px]" /> &nbsp;
           <span>
-            Вы можете{" "}
+            Вы можете поддержать проект,{" "}
             <a
               href="https://pay.cloudtips.ru/p/a368e9f8"
               target="_blank"
               className="underline"
             >
-              сделать донат
-            </a>{" "}
-            если хотите поддержaть проект. Большое спасибо всем, кто уже
-            поддержал нас! Общая сумма донатов: 3 300 ₽
+              сделав донат
+            </a>
+            . Спасибо всем, кто уже оказал поддержку! Общая сумма донатов: 3 800
+            ₽
           </span>
         </p>
         <p className="mb-2 flex items-center space-x-1">
