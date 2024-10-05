@@ -277,3 +277,15 @@ stations:
         website: https://smotrim.ru/brand/65317
         feed: docs/mayak/65317.xml
         image: https://rss.coyotle.ru/images/mayak/65317_v1.jpg
+
+  - name: Радио России
+    id: 3
+    website: https://smotrim.ru/radiorus
+    podcasts:
+      - title: Российский радиоуниверситет
+        description: 'Ежедневная научно-просветительская программа "Мы звучим на всю страну, говорим с нашим народом и рассказываем ему о настоящем и будущем" с  ведущим Дмитрием Конаныхиным.'
+        brand_id: 63253
+        category: Society & Culture
+        website: https://smotrim.ru/brand/63253
+        feed: docs/radiorus/63253.xml
+        image: https://rss.coyotle.ru/images/radiorus/63253_v1.jpg
