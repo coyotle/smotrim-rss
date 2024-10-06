@@ -9,8 +9,8 @@
 Для создания лент самостоятельно:
 
 ```sh
-git clone https://github.com/coyotle/vesti-rss.git
-cd vesti-rss
+git clone https://github.com/coyotle/smotrim-rss.git
+cd smotrim-rss
 python -m venv venv
 . venv/bin/activate
 pip install requirements.txt
