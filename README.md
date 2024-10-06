@@ -1,5 +1,5 @@
-<h1 align="center">vesti-rss</h1>
-<p align="center">Скрипт создания RSS лент для программ радио Вести ФМ, Маяк и д.р.</p>
+<h1 align="center">smotrim-rss</h1>
+<p align="center">Скрипт создания RSS лент для подкастов с платформы Смотрим</p>
 <p align="center">
   <a href="https://pay.cloudtips.ru/p/a368e9f8"> <img src="https://img.shields.io/badge/%E2%9D%A4_%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-cloudtips.ru-e55"></a>
   <a href="https://github.com/coyotle/vesti-rss/actions/workflows/update_pages.yml"><img src="https://github.com/coyotle/vesti-rss/actions/workflows/update_pages.yml/badge.svg?branch"></a>
@@ -67,4 +67,4 @@ python main.py
 
 - [Российский радиоуниверситет](https://rss.coyotle.ru/radiorus/63253.xml)
 
-Пишите если не хватает еще каких-то программ Вестей, или хотите слушать что-то с Маяка или Культуры.
+PS Пишите если не хватает еще каких-то программ.
