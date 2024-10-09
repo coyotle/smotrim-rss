@@ -216,31 +216,33 @@ def write_podcast_feed_to_file(podcast: PodcastModel, feed_str: str):
 def create_station_feeds(station: StationModel):
     for podcast in station.podcasts:
         podcast.station = station.name
-        podcast_feed = generate_podcast_feed(podcast)
-        feed_str = podcast_feed.rss_str()
-        write_podcast_feed_to_file(podcast, feed_str)
+        try:
+            podcast_feed = generate_podcast_feed(podcast)
+            feed_str = podcast_feed.rss_str()
+            write_podcast_feed_to_file(podcast, feed_str)
+        except Exception as e:
+            logger.error(f'Can`t create feed for "{podcast.title}": {e}')
 
 
 def main():
     try:
         with open("podcasts.yaml", "r") as file:
             yaml_data = yaml.safe_load(file)
+            logger.info(f"Podcast list loaded from podcasts.yaml")
     except Exception as e:
         logger.error(f"Failed to load podcasts.yaml: {e}")
         sys.exit(1)
 
     try:
         stations_data = StationsDataModel(**yaml_data)
+        logger.info(f"Data validation: OK")
     except ValidationError as e:
         logger.error(f"Data validation problem: {e}")
         sys.exit(1)
 
     for station in stations_data.stations:
         logger.info(f"- {station.name}")
-        try:
-            create_station_feeds(station)
-        except Exception as e:
-            logger.error(f'Can`t create feed for "{station.name}": {e}')
+        create_station_feeds(station)
 
 
 if __name__ == "__main__":
