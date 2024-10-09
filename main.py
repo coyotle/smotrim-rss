@@ -146,6 +146,9 @@ def fetch_raw_episodes(podcast: PodcastModel, limit=20) -> List[dict]:
         episode_params["rubricId"] = podcast.rubric_id
 
     r = requests.get(episode_url, params=episode_params)
+    if r.status_code != 200:
+        raise ValueError(f"HTTP status code {r.status_code}")
+
     return json.loads(r.text)["contents"][0]["list"]
 
 
