@@ -218,6 +218,15 @@ stations:
         feed: docs/61029.xml
         image: https://rss.coyotle.ru/images/61029_v1.jpg
 
+      - title: Хай-Тек
+        description: "Современные технологии: высокие и не очень. Какими из них человечество овладело только недавно? А какие – лишь кажутся новыми, а на самом деле существуют с незапамятных времен? Рубрика Николая Гринько."
+        brand_id: 60950
+        category: News
+        sub_category: Tech News
+        website: https://smotrim.ru/brand/60950
+        feed: docs/vesti/60950.xml
+        image: https://rss.coyotle.ru/images/vesti/60950_v1.jpg
+
   - name: Маяк
     id: 2
     website: https://smotrim.ru/radiomayak

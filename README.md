@@ -50,6 +50,7 @@ python main.py
 - [Турецкий хаб](https://rss.coyotle.ru/turhub.xml)
 - [Угол зрения](https://rss.coyotle.ru/69014.xml)
 - [Формула смысла](https://rss.coyotle.ru/formula.xml)
+- [Хай-Тек](https://rss.coyotle.ru/vesti/60950.xml)
 - [Штатный корреспондент](https://rss.coyotle.ru/66024.xml)
 - [Энергономика](https://rss.coyotle.ru/68185.xml)
 
