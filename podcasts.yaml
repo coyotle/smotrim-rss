@@ -298,3 +298,11 @@ stations:
         website: https://smotrim.ru/brand/63253
         feed: docs/radiorus/63253.xml
         image: https://rss.coyotle.ru/images/radiorus/63253_v1.jpg
+
+      - title: "КультБригада: слово, смысл, литература"
+        description: "Программа для тех, кто ищет смысл в слове. Ведущий – Вячеслав Коновалов."
+        brand_id: 65486
+        category: Society & Culture
+        website: https://smotrim.ru/brand/65486
+        feed: docs/radiorus/65486.xml
+        image: https://rss.coyotle.ru/images/radiorus/65486_v1.jpg
