@@ -45,7 +45,6 @@ python main.py
 - [Параллели](https://rss.coyotle.ru/paralleli.xml)
 - [Поворот на Восток](https://rss.coyotle.ru/povorotnavostok.xml)
 - [Поле Куликова](https://rss.coyotle.ru/polekulikova.xml)
-- [Соловьёв LIVE](https://rss.coyotle.ru/66924.xml)
 - [Традиции](https://rss.coyotle.ru/64392.xml)
 - [Турецкий хаб](https://rss.coyotle.ru/turhub.xml)
 - [Угол зрения](https://rss.coyotle.ru/69014.xml)
@@ -53,6 +52,11 @@ python main.py
 - [Хай-Тек](https://rss.coyotle.ru/vesti/60950.xml)
 - [Штатный корреспондент](https://rss.coyotle.ru/66024.xml)
 - [Энергономика](https://rss.coyotle.ru/68185.xml)
+
+#### Соловьёв Live
+
+- [Соловьёв LIVE](https://rss.coyotle.ru/66924.xml)
+- [Полный контакт](https://rss.coyotle.ru/soloviev/60948.xml)
 
 #### Маяк
 

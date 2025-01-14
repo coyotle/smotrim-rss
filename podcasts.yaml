@@ -137,15 +137,6 @@ stations:
         feed: docs/69014.xml
         image: https://rss.coyotle.ru/images/69014_v1.jpg
 
-      - title: Соловьёв LIVE
-        description: "В прямом эфире – новости и размышления, прямые включения корреспондентов, обсуждение повестки с признанными экспертами из разных областей."
-        brand_id: 66924
-        category: News
-        sub_category: Politics
-        website: https://smotrim.ru/brand/66924
-        feed: docs/66924.xml
-        image: https://rss.coyotle.ru/images/66924_v1.jpg
-
       - title: Традиции
         description: "Мы много говорим о политике, деньгах, конфликтах. А на самом деле человек живет более простыми и глубокими вещами. Возвращаемся к традиционным ценностям с Сергеем Михеевым."
         brand_id: 64392
@@ -306,3 +297,25 @@ stations:
         website: https://smotrim.ru/brand/65486
         feed: docs/radiorus/65486.xml
         image: https://rss.coyotle.ru/images/radiorus/65486_v1.jpg
+
+  - name: Соловьёв LIVE
+    id: 4
+    website: https://smotrim.ru/soloviev
+    podcasts:
+      - title: Соловьёв LIVE
+        description: "В прямом эфире – новости и размышления, прямые включения корреспондентов, обсуждение повестки с признанными экспертами из разных областей."
+        brand_id: 66924
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/66924
+        feed: docs/66924.xml
+        image: https://rss.coyotle.ru/images/66924_v1.jpg
+
+      - title: Полный контакт
+        description: "Авторская политическая программа журналиста, радио- и телеведущего Владимира Соловьева. Программа выходит каждые вторник, среду и четверг с 7:00 до 11:00 утра."
+        brand_id: 60948
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/60948
+        feed: docs/soloviev/60948.xml
+        image: https://rss.coyotle.ru/images/soloviev/69048_v1.jpg
