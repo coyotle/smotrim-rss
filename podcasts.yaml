@@ -285,6 +285,15 @@ stations:
         website: https://smotrim.ru/podcast/1641
         feed: docs/mayak/1641.xml
         image: https://rss.coyotle.ru/images/mayak/1641_v1.jpg
+
+      - title: Не просто Мария
+        description: "Клинический психолог Мария Киселёва, вместе с Сергеем Стиллавиным, помогает слушателям разобраться в тех или иных жизненных вопросах и ситуациях."
+        rubric_id: 3041
+        category: Society & Culture
+        website: https://smotrim.ru/podcast/3041
+        feed: docs/mayak/3041.xml
+        image: https://rss.coyotle.ru/images/mayak/3041_v1.jpg
+
   - name: Радио России
     id: 3
     website: https://smotrim.ru/radiorus
