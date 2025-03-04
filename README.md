@@ -62,6 +62,7 @@ python main.py
 
 - [Белая студия](https://rss.coyotle.ru/mayak/60200.xml)
 - [МузДок](https://rss.coyotle.ru/mayak/65317.xml)
+- [Мужчина. Руководство по эксплуатации](https://rss.coyotle.ru/mayak/1641.xml)
 - [Пойми себя, если сможешь](https://rss.coyotle.ru/mayak/64495.xml)
 - [Сергей Стиллавин и его друзья](https://rss.coyotle.ru/mayak/58219.xml)
 - [Трудности перехода](https://rss.coyotle.ru/mayak/69881.xml)

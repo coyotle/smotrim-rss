@@ -278,6 +278,13 @@ stations:
         feed: docs/mayak/65317.xml
         image: https://rss.coyotle.ru/images/mayak/65317_v1.jpg
 
+      - title: Мужчина. Руководство по эксплуатации
+        description: "Сергей Стиллавин, Витус, Виктория Колосова и межгалактический профессор Анатолий Добин обсуждают животрепещущие темы из раздела психологии."
+        rubric_id: 1641
+        category: Society & Culture
+        website: https://smotrim.ru/podcast/1641
+        feed: docs/mayak/1641.xml
+        image: https://rss.coyotle.ru/images/mayak/1641_v1.jpg
   - name: Радио России
     id: 3
     website: https://smotrim.ru/radiorus
