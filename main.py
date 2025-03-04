@@ -134,7 +134,7 @@ def build_p2g_episode(podcast_item):
     return ep
 
 
-def fetch_raw_episodes(podcast: PodcastModel, limit=20) -> List[dict]:
+def fetch_raw_episodes(podcast: PodcastModel, limit=10) -> List[dict]:
     episode_url = "https://smotrim.ru/api/audios"
     episode_params = {
         "page": 1,
