@@ -53,7 +53,7 @@ const Home = () => {
             Наш проект теперь с открытым кодом! Можете использовать или внести
             свой вклад на&nbsp;
             <a
-              href="https://github.com/coyotle/vesti-rss"
+              href="https://github.com/coyotle/smotrim-rss"
               target="_blank"
               className="underline"
             >
@@ -73,7 +73,7 @@ const Home = () => {
             >
               сделав донат
             </a>
-            . Спасибо всем, кто уже оказал поддержку! Общая сумма донатов: 4 300
+            . Спасибо всем, кто уже оказал поддержку! Общая сумма донатов: 4 800
             ₽
           </span>
         </p>
