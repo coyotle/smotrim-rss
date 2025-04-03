@@ -314,6 +314,14 @@ stations:
         feed: docs/radiorus/65486.xml
         image: https://rss.coyotle.ru/images/radiorus/65486_v1.jpg
 
+      - title: "Театр у микрофона"
+        description: 'В эфире "Радио России" золотая коллекция радиоспектаклей из собрания Гостелерадиофонда. Спектакли озвучены известными артистами СССР и России.'
+        brand_id: 62853
+        category: Society & Culture
+        website: https://smotrim.ru/brand/62853
+        feed: docs/radiorus/62853.xml
+        image: https://rss.coyotle.ru/images/radiorus/62853_v1.jpg
+
   - name: Соловьёв LIVE
     id: 4
     website: https://smotrim.ru/soloviev
