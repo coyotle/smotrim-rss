@@ -162,7 +162,10 @@ def fetch_raw_episodes(podcast: PodcastModel, limit=10):
     )
 
     try:
-        data = r.read()  # читает всё, что реально пришло
+        try:
+            data = r.read()
+        except IncompleteRead as e:
+            data = e.partial
     finally:
         r.release_conn()
 
