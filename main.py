@@ -6,6 +6,7 @@ from typing import List, Optional
 
 import pytz
 import requests
+import urllib3
 import yaml
 from loguru import logger
 from pod2gen import Category, Episode, Funding, Media, Person, Podcast
@@ -25,6 +26,12 @@ logger.level("INFO", color="<green>")
 logger.level("WARNING", color="<yellow>")
 logger.level("ERROR", color="<red>")
 logger.level("CRITICAL", color="<magenta>")
+
+http = urllib3.PoolManager(
+    headers={
+        "Accept-Encoding": "identity",
+    }
+)
 
 
 class PodcastModel(BaseModel):
@@ -134,34 +141,37 @@ def build_p2g_episode(podcast_item):
     return ep
 
 
-def fetch_raw_episodes(podcast: PodcastModel, limit=10) -> List[dict]:
-    episode_url = "https://smotrim.ru/api/audios"
-    episode_params = {
+def fetch_raw_episodes(podcast: PodcastModel, limit=10):
+    url = "https://smotrim.ru/api/audios"
+    params = {
         "page": 1,
         "limit": limit,
     }
-    if podcast.brand_id:
-        episode_params["brandId"] = podcast.brand_id
-    elif podcast.rubric_id:
-        episode_params["rubricId"] = podcast.rubric_id
 
-    headers = {"Accept-Encoding": "identity"}
+    if podcast.brand_id:
+        params["brandId"] = podcast.brand_id
+    elif podcast.rubric_id:
+        params["rubricId"] = podcast.rubric_id
+
+    r = http.request(
+        "GET",
+        url,
+        fields=params,
+        preload_content=False,
+        enforce_content_length=False,  # ignore content-lenght errors
+    )
 
     try:
-        r = requests.get(
-            episode_url, params=episode_params, headers=headers, stream=True
-        )
-        if r.status_code != 200:
-            raise ValueError(f"HTTP status code {r.status_code}")
+        data = r.read()  # читает всё, что реально пришло
+    finally:
+        r.release_conn()
 
-        content = b""
-        for chunk in r.iter_content(chunk_size=8192, decode_unicode=False):
-            if chunk:
-                content += chunk
+    try:
+        payload = json.loads(data.decode("utf-8"))
+    except json.JSONDecodeError:
+        return []
 
-        return json.loads(content.decode("utf-8"))["contents"][0]["list"]
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid JSON response: {e}")
+    return payload["contents"][0]["list"]
 
 
 def process_raw_episodes(
