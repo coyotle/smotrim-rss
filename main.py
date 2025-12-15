@@ -145,11 +145,19 @@ def fetch_raw_episodes(podcast: PodcastModel, limit=10) -> List[dict]:
     elif podcast.rubric_id:
         episode_params["rubricId"] = podcast.rubric_id
 
-    r = requests.get(episode_url, params=episode_params)
-    if r.status_code != 200:
-        raise ValueError(f"HTTP status code {r.status_code}")
+    try:
+        r = requests.get(episode_url, params=episode_params, stream=True)
+        if r.status_code != 200:
+            raise ValueError(f"HTTP status code {r.status_code}")
 
-    return json.loads(r.text)["contents"][0]["list"]
+        content = b""
+        for chunk in r.iter_content(chunk_size=8192, decode_unicode=False):
+            if chunk:
+                content += chunk
+
+        return json.loads(content.decode("utf-8"))["contents"][0]["list"]
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON response: {e}")
 
 
 def process_raw_episodes(
