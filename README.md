@@ -69,6 +69,7 @@ python main.py
 - [Трудности перехода](https://rss.coyotle.ru/mayak/69881.xml)
 - [Физики и лирики](https://rss.coyotle.ru/mayak/62250.xml)
 - [Хорошо темперированный эфир](https://rss.coyotle.ru/mayak/67656.xml)
+- [Обратная сторона музыки](https://rss.coyotle.ru/mayak/5382.xml)
 
 #### Радио России
 

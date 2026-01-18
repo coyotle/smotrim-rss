@@ -294,6 +294,14 @@ stations:
         feed: docs/mayak/3041.xml
         image: https://rss.coyotle.ru/images/mayak/3041_v1.jpg
 
+      - title: Обратная сторона музыки
+        description: "Как стать музыкантом, как полюбить классическую музыку, как написать хит, как устроен мир звукозаписи, почему мы вообще слушаем музыку – все тайны мира звука раскрывают музыковед, искусствовед и психолог Дина Кирнарская и Сергей Стиллавин."
+        rubric_id: 5382
+        category: Society & Culture
+        website: https://smotrim.ru/podcast/5382
+        feed: docs/mayak/5382.xml
+        image: https://rss.coyotle.ru/images/mayak/5382_v1.jpg
+
   - name: Радио России
     id: 3
     website: https://smotrim.ru/radiorus
