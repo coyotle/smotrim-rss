@@ -13,7 +13,7 @@ git clone https://github.com/coyotle/smotrim-rss.git
 cd smotrim-rss
 python -m venv venv
 . venv/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 python main.py
 ```
 
