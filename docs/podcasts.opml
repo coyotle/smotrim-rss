@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<opml version="2.0">
+	<head>
+		<title>Подкасты платформы Смотрим</title>
+		<dateCreated>11 Feb 26 11:16:03 +0100</dateCreated>
+	</head>
+	<body>
+		<outline text="Вести ФМ">
+			<outline text="Альтера Парс" type="rss" xmlUrl="https://rss.coyotle.ru/60977.xml" htmlUrl="https://smotrim.ru/brand/60977"/>
+			<outline text="Американские горки" type="rss" xmlUrl="https://rss.coyotle.ru/amgorki.xml" htmlUrl="https://smotrim.ru/brand/63263"/>
+			<outline text="Большой формат" type="rss" xmlUrl="https://rss.coyotle.ru/62330.xml" htmlUrl="https://smotrim.ru/brand/62330"/>
+			<outline text="Бывшие" type="rss" xmlUrl="https://rss.coyotle.ru/former.xml" htmlUrl="https://smotrim.ru/brand/62046"/>
+			<outline text="Внешний контур" type="rss" xmlUrl="https://rss.coyotle.ru/70198.xml" htmlUrl="https://smotrim.ru/brand/70198"/>
+			<outline text="Восточная шкатулка" type="rss" xmlUrl="https://rss.coyotle.ru/vshkatulka.xml" htmlUrl="https://smotrim.ru/brand/62186"/>
+			<outline text="Дневной рубеж" type="rss" xmlUrl="https://rss.coyotle.ru/65871.xml" htmlUrl="https://smotrim.ru/brand/65871"/>
+			<outline text="Дни и ночи войны" type="rss" xmlUrl="https://rss.coyotle.ru/69811.xml" htmlUrl="https://smotrim.ru/brand/69811"/>
+			<outline text="Еврозона" type="rss" xmlUrl="https://rss.coyotle.ru/eurozone.xml" htmlUrl="https://smotrim.ru/brand/62139"/>
+			<outline text="Железная логика" type="rss" xmlUrl="https://rss.coyotle.ru/zheleznaya.xml" htmlUrl="https://smotrim.ru/brand/61016"/>
+			<outline text="Иллюзия власти" type="rss" xmlUrl="https://rss.coyotle.ru/illusion.xml" htmlUrl="https://smotrim.ru/brand/67761"/>
+			<outline text="Информбистро" type="rss" xmlUrl="https://rss.coyotle.ru/61029.xml" htmlUrl="https://smotrim.ru/brand/61029"/>
+			<outline text="Нацвопрос" type="rss" xmlUrl="https://rss.coyotle.ru/natsvopros.xml" htmlUrl="https://smotrim.ru/brand/61015"/>
+			<outline text="Наша Арктика" type="rss" xmlUrl="https://rss.coyotle.ru/69169.xml" htmlUrl="https://smotrim.ru/brand/69169"/>
+			<outline text="Параллели" type="rss" xmlUrl="https://rss.coyotle.ru/paralleli.xml" htmlUrl="https://smotrim.ru/brand/61175"/>
+			<outline text="Поворот на Восток" type="rss" xmlUrl="https://rss.coyotle.ru/povorotnavostok.xml" htmlUrl="https://smotrim.ru/brand/68525"/>
+			<outline text="Поле Куликова" type="rss" xmlUrl="https://rss.coyotle.ru/polekulikova.xml" htmlUrl="https://smotrim.ru/podcast/7261"/>
+			<outline text="Традиции" type="rss" xmlUrl="https://rss.coyotle.ru/64392.xml" htmlUrl="https://smotrim.ru/brand/64392"/>
+			<outline text="Турецкий хаб" type="rss" xmlUrl="https://rss.coyotle.ru/turhub.xml" htmlUrl="https://smotrim.ru/brand/69703"/>
+			<outline text="Угол зрения" type="rss" xmlUrl="https://rss.coyotle.ru/69014.xml" htmlUrl="https://smotrim.ru/brand/69014"/>
+			<outline text="Формула смысла" type="rss" xmlUrl="https://rss.coyotle.ru/formula.xml" htmlUrl="https://smotrim.ru/brand/61007"/>
+			<outline text="Хай-Тек" type="rss" xmlUrl="https://rss.coyotle.ru/vesti/60950.xml" htmlUrl="https://smotrim.ru/brand/60950"/>
+			<outline text="Штатный корреспондент" type="rss" xmlUrl="https://rss.coyotle.ru/66024.xml" htmlUrl="https://smotrim.ru/brand/66024"/>
+			<outline text="Энергономика" type="rss" xmlUrl="https://rss.coyotle.ru/68185.xml" htmlUrl="https://smotrim.ru/brand/68185"/>
+		</outline>
+		<outline text="Соловьёв Live">
+			<outline text="Соловьёв LIVE" type="rss" xmlUrl="https://rss.coyotle.ru/66924.xml" htmlUrl="https://smotrim.ru/brand/66924"/>
+			<outline text="Полный контакт" type="rss" xmlUrl="https://rss.coyotle.ru/soloviev/60948.xml" htmlUrl="https://smotrim.ru/brand/60948"/>
+		</outline>
+		<outline text="Маяк">
+			<outline text="Белая студия" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/60200.xml" htmlUrl="https://smotrim.ru/brand/60200"/>
+			<outline text="МузДок" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/65317.xml" htmlUrl="https://smotrim.ru/brand/65317"/>
+			<outline text="Мужчина. Руководство по эксплуатации" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/1641.xml" htmlUrl="https://smotrim.ru/podcast/1641"/>
+			<outline text="Не просто Мария" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/3041.xml" htmlUrl="https://smotrim.ru/podcast/3041"/>
+			<outline text="Пойми себя, если сможешь" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/64495.xml" htmlUrl="https://smotrim.ru/brand/64495"/>
+			<outline text="Сергей Стиллавин и его друзья" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/58219.xml" htmlUrl="https://smotrim.ru/brand/58219"/>
+			<outline text="Трудности перехода" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/69881.xml" htmlUrl="https://smotrim.ru/brand/69881"/>
+			<outline text="Физики и лирики" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/62250.xml" htmlUrl="https://smotrim.ru/brand/62250"/>
+			<outline text="Хорошо темперированный эфир" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/67656.xml" htmlUrl="https://smotrim.ru/brand/67656"/>
+			<outline text="Обратная сторона музыки" type="rss" xmlUrl="https://rss.coyotle.ru/mayak/5382.xml" htmlUrl="https://smotrim.ru/podcast/5382"/>
+		</outline>
+		<outline text="Радио России">
+			<outline text="КультБригада: слово, смысл, литература" type="rss" xmlUrl="https://rss.coyotle.ru/radiorus/65486.xml" htmlUrl="https://smotrim.ru/brand/65486"/>
+			<outline text="Российский радиоуниверситет" type="rss" xmlUrl="https://rss.coyotle.ru/radiorus/63253.xml" htmlUrl="https://smotrim.ru/brand/63253"/>
+			<outline text="Театр у микрофона" type="rss" xmlUrl="https://rss.coyotle.ru/radiorus/62853.xml" htmlUrl="https://smotrim.ru/brand/62853"/>
+		</outline>
+	</body>
+</opml>
