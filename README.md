@@ -23,7 +23,7 @@ python main.py
 
 - Внешний хостинг RSS лент: https://rss.coyotle.ru/
 - Обновление происходит автоматически с помощью GitHub Actions каждые в 2 часа
-- Список всех подкастов доступен для импорта в формате [OPML](https://rss.coyotle.ru/podcasts.opml)
+- Список всех подкастов доступен для импорта в формате [OPML](https://rss.coyotle.ru/podcasts.opml.xml)
 
 ### Ленты создаются для следующих программ:
 
