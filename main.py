@@ -2,8 +2,10 @@ import asyncio
 import json
 import locale
 import sys
+import hashlib
 from datetime import datetime, timedelta
 from typing import List, Optional
+
 
 import aiohttp
 import pytz
@@ -210,12 +212,6 @@ class PodcastFeedGenerator:
         return format_datetime(pub_date.astimezone(pytz.timezone(TIMEZONE)))
 
 
-def str_to_sec(time_str: str) -> int:
-    time_parts = list(map(int, time_str.split(":")))
-    seconds = sum(part * (60**i) for i, part in enumerate(reversed(time_parts)))
-    return seconds
-
-
 def parse_api_date(api_response: str) -> datetime:
     try:
         return datetime.strptime(api_response, "%d %B %Y")
@@ -230,7 +226,7 @@ def parse_api_date(api_response: str) -> datetime:
 async def get_media_size_async(session: aiohttp.ClientSession, url: str) -> int:
     """Асинхронно получает размер медиафайла через HEAD запрос"""
     try:
-        async with session.head(url, allow_redirects=True, timeout=aiohttp.ClientTimeout(total=10)) as response:
+        async with session.head(url, allow_redirects=True, timeout=aiohttp.ClientTimeout(total=5)) as response:
             if response.status == 200:
                 content_length = response.headers.get("Content-Length")
                 if not content_length:
@@ -260,37 +256,105 @@ async def get_multiple_media_sizes(urls: List[str]) -> dict:
         return dict(results)
 
 
-def fetch_raw_episodes(podcast: PodcastModel, limit=10):
-    url = "https://smotrim.ru/api/audios"
-    params = {
+def fetch_raw_episodes(podcast:PodcastModel, limit=20):
+    variables = {
+        "brandId": podcast.brand_id,
         "page": 1,
-        "limit": limit,
+        "first": limit,
+        "order": "DESC",
     }
 
-    if podcast.brand_id:
-        params["brandId"] = podcast.brand_id
-    elif podcast.rubric_id:
-        params["rubricId"] = podcast.rubric_id
+    query = """
+    query FilterEpisodes(
+        $brandId: Int
+        $seasonId: Int
+        $page: Int
+        $first: Int!
+        $order: SortOrder = DESC
+    ) {
+        episodesFilter(
+            brand_id: $brandId
+            season_id: $seasonId
+            first: $first
+            page: $page
+            orderBy: { column: EPISODES_AIR_DATE, order: $order }
+        ) {
+            data {
+                ... on Episode {
+                    id
+                    title
+                    status {
+					    enum	
+                    }
+                    description
+                    airDate
+                    publicationDate
+                    audio {
+                        duration
+                        publicId
+                    }
+                }
+            }
+        }
+    }
+    """
 
-    r = http.request("GET", url, fields=params, preload_content=False, enforce_content_length=False, )
+    body_dict = {
+        "operationName": "FilterEpisodes",
+        "variables": variables,
+        "query": query,
+    }
 
-    try:
-        data = r.read()
-    except Exception as e:
-        logger.error(f"Error reading response: {e}")
-        if hasattr(e, 'partial'):
-            data = e.partial
-        else:
-            return []
-    finally:
-        r.release_conn()
+    body_str = json.dumps(body_dict, separators=(",", ":"), ensure_ascii=False)
+    body_hash = hashlib.md5(body_str.encode()).hexdigest()
 
-    try:
-        payload = json.loads(data.decode("utf-8"))
-    except json.JSONDecodeError:
-        return []
+    vars_str = json.dumps(variables, separators=(",", ":"))
+    vars_hash = hashlib.md5(vars_str.encode()).hexdigest()
 
-    return payload["contents"][0]["list"]
+    url = f"https://apis.smotrim.ru/graphql?page=FilterEpisodes&body={body_hash}&vars={vars_hash}"
+
+    response = requests.post(
+        url,
+        data=body_str,
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0",
+            "Origin": "https://smotrim.ru",
+            "Referer": "https://smotrim.ru/",
+        },
+        timeout=10,
+    )
+
+    data = response.json()
+    if "data" not in data or "episodesFilter" not in data["data"]:
+        logger.error(f"Invalid GraphQL response structure for {podcast.title}")
+        return [], 0
+
+    episodes_filter = data["data"]["episodesFilter"]
+    
+    if "data" in episodes_filter:
+        # оставляем эпизоды с airDate
+        episodes = [e for e in episodes_filter["data"] if e.get("airDate") is not None and e.get("audio") is not None]
+
+        for ep in episodes:
+            audio = ep.get("audio")
+            if audio and audio.get("publicId"):
+                audio_id = audio["publicId"]
+                # Получаем json с mp3 ссылкой
+                try:
+                    r = requests.get(f"https://player-api.smotrim.ru/api/v1/audio/{audio_id}", timeout=10)
+                    r.raise_for_status()
+                    audio_data = r.json().get("data", {})
+                    ep["audio"]["mp3"] = audio_data.get("streams", {}).get("mp3")
+                except Exception as ex:
+                    logger.warning(f"Failed to get audio URL for episode {ep.get('id')}: {ex}")
+                    ep["audio_url"] = None
+            else:
+                ep["audio_url"] = None
+
+        episodes_filter = episodes
+                             
+    return episodes_filter
 
 
 def process_raw_episodes(
@@ -299,10 +363,7 @@ def process_raw_episodes(
     episodes = []
     
     # Собираем URL для параллельной обработки
-    media_urls = []
-    for raw_ep in raw_episodes:
-        media_url = f"https://vgtrk-podcast.cdnvideo.ru/audio/listen?id={raw_ep['id']}"
-        media_urls.append(media_url)
+    media_urls = [e["audio"]["mp3"] for e in raw_episodes]
     
     # Получаем размеры параллельно
     logger.debug(f"Fetching sizes for {len(media_urls)} episodes...")
@@ -315,19 +376,13 @@ def process_raw_episodes(
     
     # Обрабатываем эпизоды
     for raw_ep in raw_episodes:
-        media_url = f"https://vgtrk-podcast.cdnvideo.ru/audio/listen?id={raw_ep['id']}"
+        media_url = raw_ep["audio"]["mp3"]
         media_size = media_sizes.get(media_url)
+        #logger.debug(f"image: {podcast.image}")
 
         if not media_size or media_size <= 0:
             media_size = 0 
             logger.warning(f"Episode {raw_ep['id']} (media_url: {media_url}) - invalid or missing media size")
-
-        try:
-            resp = requests.get(raw_ep["player"]["preview"]["source"]["main"], timeout=10)
-            resp.raise_for_status()
-            picture_url = resp.url
-        except Exception as e:
-            logger.warning(f"Episode {raw_ep['id']} - failed to get picture URL: {e}")
             
         try:
             description = raw_ep["description"] or ""
@@ -336,13 +391,13 @@ def process_raw_episodes(
                 brand_id=podcast.brand_id,
                 rubric_id=podcast.rubric_id,
                 title=raw_ep["title"],
-                published=parse_api_date(raw_ep["published"]),
-                duration=str_to_sec(raw_ep["duration"]),
-                anons=raw_ep["anons"],
+                published=datetime.strptime(raw_ep["airDate"], "%Y-%m-%dT%H:%M:%S%z"),
+                duration=raw_ep["audio"]["duration"],
+                anons=raw_ep["title"],
                 description=f"{description}",
                 media_url=media_url,
                 media_size=media_size,
-                picture_url=picture_url,
+                picture_url=str(podcast.image),
             )
             episodes.append(ep)
         except Exception as e:
