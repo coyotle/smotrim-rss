@@ -17,7 +17,7 @@ import xml.etree.ElementTree as ET
 from email.utils import format_datetime
 from pydantic import BaseModel, Field, HttpUrl, ValidationError
 
-GENERATOR_VERSION = "0.3"
+GENERATOR_VERSION = "0.4a"
 GENERATOR_NAME = f"smotrim.ru podcast generator v{GENERATOR_VERSION}"
 
 OWNER_NAME = "Sergey"
