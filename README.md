@@ -46,6 +46,7 @@ python main.py
 - [Параллели](https://rss.coyotle.ru/paralleli.xml)
 - [Поворот на Восток](https://rss.coyotle.ru/povorotnavostok.xml)
 - [Поле Куликова](https://rss.coyotle.ru/polekulikova.xml)
+- [Рулевой](https://rss.coyotle.ru/vesti/68922.xml)
 - [Традиции](https://rss.coyotle.ru/64392.xml)
 - [Турецкий хаб](https://rss.coyotle.ru/turhub.xml)
 - [Угол зрения](https://rss.coyotle.ru/69014.xml)

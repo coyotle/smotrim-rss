@@ -218,6 +218,15 @@ stations:
         feed: docs/vesti/60950.xml
         image: https://rss.coyotle.ru/images/vesti/60950_v1.jpg
 
+      - title: Рулевой
+        description: 'Автомобиль, автоводитель, автоэксперт. Каждую субботу после 14 часов разбираем на детали и собираем в единое целое. Главные события мирового и отечественного автопрома вместе с главным редактором журнала "За рулём" Максимом Кадаковым на радио "Вести FM".'
+        brand_id: 68922
+        category: News
+        sub_category: Tech News
+        website: https://smotrim.ru/brand/68922
+        feed: docs/vesti/68922.xml
+        image: https://rss.coyotle.ru/images/vesti/68922_v1.jpg
+
   - name: Маяк
     id: 2
     website: https://smotrim.ru/radiomayak
