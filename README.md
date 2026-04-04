@@ -41,6 +41,7 @@ python main.py
 - [Железная логика](https://rss.coyotle.ru/zheleznaya.xml)
 - [Иллюзия власти](https://rss.coyotle.ru/illusion.xml)
 - [Информбистро](https://rss.coyotle.ru/61029.xml)
+- [Научный факт](https://rss.coyotle.ru/vesti/69679.xml)
 - [Нацвопрос](https://rss.coyotle.ru/natsvopros.xml)
 - [Наша Арктика](https://rss.coyotle.ru/69169.xml)
 - [Параллели](https://rss.coyotle.ru/paralleli.xml)

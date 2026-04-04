@@ -227,6 +227,15 @@ stations:
         feed: docs/vesti/68922.xml
         image: https://rss.coyotle.ru/images/vesti/68922_v1.jpg
 
+      - title: Научный факт
+        description: 'Заметные события с точки зрения науки.'
+        brand_id: 69679
+        category: News
+        sub_category: Tech News
+        website: https://smotrim.ru/brand/69679
+        feed: docs/vesti/69679.xml
+        image: https://rss.coyotle.ru/images/vesti/69679_v1.jpg
+
   - name: Маяк
     id: 2
     website: https://smotrim.ru/radiomayak
