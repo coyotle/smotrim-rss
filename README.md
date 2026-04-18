@@ -2,27 +2,32 @@
 <p align="center">Скрипт создания RSS лент для подкастов с платформы Смотрим</p>
 <p align="center">
   <a href="https://pay.cloudtips.ru/p/a368e9f8"> <img src="https://img.shields.io/badge/%E2%9D%A4_%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-cloudtips.ru-e55"></a>
-  <a href="https://github.com/coyotle/vesti-rss/actions/workflows/update_pages.yml"><img src="https://github.com/coyotle/vesti-rss/actions/workflows/update_pages.yml/badge.svg?branch"></a>
+  <a href="https://github.com/coyotle/smotrim-rss/actions/workflows/update_pages.yml"><img src="https://github.com/coyotle/smotrim-rss/actions/workflows/update_pages.yml/badge.svg?branch"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 </p>
 
-Для создания лент самостоятельно:
+> [!NOTE]
+> Часть контента на smotrim.ru теперь предоставляется только в виде видеопотока (HLS/m3u8) без отдельного аудиофайла.
+> Для таких выпусков невозможно сформировать классическую RSS ленту.
+> Это ограничение связано с моделью распространения контента на стороне платформы и его не получится обойти в рамках данного проекта.
 
+
+## Создание RSS лент самостоятельно
 ```sh
 git clone https://github.com/coyotle/smotrim-rss.git
 cd smotrim-rss
 python -m venv venv
-. venv/bin/activate
+source ./venv/bin/activate
 pip install -r requirements.txt
 python main.py
 ```
 
-Файлы RSS будут в директории `docs/`
+Файлы RSS будут созданы в директории `docs/`
 
 ## RSS ленты
 
 - Внешний хостинг RSS лент: https://rss.coyotle.ru/
-- Обновление происходит автоматически с помощью GitHub Actions каждые в 2 часа
+- Обновление происходит автоматически с помощью GitHub Actions каждые 2 часа
 - Список всех подкастов доступен для импорта в формате [OPML](https://rss.coyotle.ru/podcasts.opml.xml)
 
 ### Ленты создаются для следующих программ:
