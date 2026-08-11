@@ -17,7 +17,7 @@ import yaml
 from loguru import logger
 from pydantic import BaseModel, Field, HttpUrl, ValidationError
 
-GENERATOR_VERSION = "0.4a"
+GENERATOR_VERSION = "0.5.0"
 GENERATOR_NAME = f"smotrim.ru podcast generator v{GENERATOR_VERSION}"
 
 OWNER_NAME = "Sergey"
@@ -401,9 +401,7 @@ def enrich_with_mp3(episodes: list):
             audio_data = r.json().get("data", {})
             audio["mp3"] = audio_data.get("streams", {}).get("mp3")
         except Exception as ex:
-            logger.warning(
-                f"Failed to get audio URL for episode {ep.get('id')}: {ex}"
-            )
+            logger.warning(f"Failed to get audio URL for episode {ep.get('id')}: {ex}")
 
 
 def enrich_video_with_m3u8(episodes: list):
@@ -425,9 +423,7 @@ def enrich_video_with_m3u8(episodes: list):
             video_data = r.json().get("data", {})
             video["m3u8"] = video_data.get("streams", {}).get("m3u8")
         except Exception as ex:
-            logger.warning(
-                f"Failed to get video URL for episode {ep.get('id')}: {ex}"
-            )
+            logger.warning(f"Failed to get video URL for episode {ep.get('id')}: {ex}")
 
 
 def fetch_raw_episodes(podcast: PodcastModel, limit=20):
@@ -456,9 +452,7 @@ def fetch_raw_episodes(podcast: PodcastModel, limit=20):
         return filter_episodes_with_stream(podcast_materials)
 
     episodes_filter = (payload.get("episodesFilter") or {}).get("data") or []
-    logger.debug(
-        f"{podcast.title}: brand type {brand_type}, using episodesFilter"
-    )
+    logger.debug(f"{podcast.title}: brand type {brand_type}, using episodesFilter")
     return filter_episodes_with_stream(episodes_filter)
 
 
@@ -607,10 +601,10 @@ def write_opml(stations_data: StationsDataModel):
     lines = []
     lines.append('<?xml version="1.0" encoding="UTF-8" standalone="no" ?>')
     lines.append('<opml version="2.0">')
-    lines.append('\t<head>')
-    lines.append('\t\t<title>Подкасты платформы Смотрим</title>')
+    lines.append("\t<head>")
+    lines.append("\t\t<title>Подкасты платформы Смотрим</title>")
     lines.append(
-        '\t\t<dateCreated>'
+        "\t\t<dateCreated>"
         + datetime.now().strftime("%d %b %y %H:%M:%S +0000")
         + "</dateCreated>"
     )
