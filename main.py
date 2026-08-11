@@ -1,11 +1,12 @@
 import asyncio
+import hashlib
 import json
 import locale
 import sys
-import hashlib
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
+from email.utils import format_datetime
 from typing import List, Optional
-
 
 import aiohttp
 import pytz
@@ -13,8 +14,6 @@ import requests
 import urllib3
 import yaml
 from loguru import logger
-import xml.etree.ElementTree as ET
-from email.utils import format_datetime
 from pydantic import BaseModel, Field, HttpUrl, ValidationError
 
 GENERATOR_VERSION = "0.4a"
@@ -59,8 +58,7 @@ http = urllib3.PoolManager(
 class PodcastModel(BaseModel):
     title: str
     description: str
-    brand_id: Optional[int] = None
-    rubric_id: Optional[int] = None
+    brand_id: int
     station: str = Field(default="")
     category: str
     sub_category: Optional[str] = None
@@ -82,8 +80,7 @@ class StationsDataModel(BaseModel):
 
 class EpisodeModel(BaseModel):
     id: int
-    brand_id: Optional[int] = None
-    rubric_id: Optional[int] = None
+    brand_id: int
     title: str
     anons: str = Field(default="")
     description: str = Field(default="")
@@ -96,9 +93,11 @@ class EpisodeModel(BaseModel):
 
 class XMLBuilder:
     """Helper for cleaner XML element creation"""
-    
+
     @staticmethod
-    def add_element(parent: Optional[ET.Element], tag: str, text_content: str = None, **attrs) -> ET.Element:
+    def add_element(
+        parent: Optional[ET.Element], tag: str, text_content: str = None, **attrs
+    ) -> ET.Element:
         """Add a simple text element. If parent is None, creates root element."""
         if parent is None:
             elem = ET.Element(tag, attrs)
@@ -107,9 +106,11 @@ class XMLBuilder:
         if text_content:
             elem.text = text_content
         return elem
-    
+
     @staticmethod
-    def add_ns_element(parent: ET.Element, namespace: str, tag: str, text_content: str = None, **attrs) -> ET.Element:
+    def add_ns_element(
+        parent: ET.Element, namespace: str, tag: str, text_content: str = None, **attrs
+    ) -> ET.Element:
         """Add a namespaced element"""
         full_tag = f"{{{namespace}}}{tag}"
         return XMLBuilder.add_element(parent, full_tag, text_content, **attrs)
@@ -117,98 +118,117 @@ class XMLBuilder:
 
 class PodcastFeedGenerator:
     """Generates RSS podcast feeds"""
-    
+
     def __init__(self, podcast: PodcastModel, episodes: List[EpisodeModel]):
         self.podcast = podcast
         self.episodes = episodes
         self.xml = XMLBuilder()
-    
+
     def generate(self) -> str:
         """Generate complete RSS feed XML"""
         rss = self.xml.add_element(None, "rss", version="2.0")
         channel = self.xml.add_element(rss, "channel")
-        
+
         self._add_channel_metadata(channel)
         self._add_channel_itunes_metadata(channel)
         self._add_episodes(channel)
-        
+
         return ET.tostring(rss, encoding="utf-8", xml_declaration=True).decode("utf-8")
-    
+
     def _add_channel_metadata(self, channel: ET.Element):
         """Add basic channel metadata"""
         self.xml.add_element(channel, "title", text_content=self.podcast.title)
         self.xml.add_element(channel, "link", text_content=str(self.podcast.website))
-        self.xml.add_element(channel, "description", text_content=self.podcast.description)
+        self.xml.add_element(
+            channel, "description", text_content=self.podcast.description
+        )
         self.xml.add_element(channel, "language", text_content="ru-RU")
         self.xml.add_element(channel, "generator", text_content=GENERATOR_NAME)
-        
+
         # Atom self-link
         self.xml.add_ns_element(
-            channel, ATOM_NS, "link",
+            channel,
+            ATOM_NS,
+            "link",
             href=self.podcast.feed,
             rel="self",
-            type="application/rss+xml"
+            type="application/rss+xml",
         )
-        
+
         # Podcast namespace
         self.xml.add_ns_element(channel, PODCAST_NS, "locked", text_content="no")
-    
+
     def _add_channel_itunes_metadata(self, channel: ET.Element):
         """Add iTunes-specific channel metadata"""
-        self.xml.add_ns_element(channel, ITUNES_NS, "author", text_content=self.podcast.station)
+        self.xml.add_ns_element(
+            channel, ITUNES_NS, "author", text_content=self.podcast.station
+        )
         self.xml.add_ns_element(channel, ITUNES_NS, "explicit", text_content="false")
-        
+
         # Owner
         owner = self.xml.add_ns_element(channel, ITUNES_NS, "owner")
         self.xml.add_ns_element(owner, ITUNES_NS, "name", text_content=OWNER_NAME)
         self.xml.add_ns_element(owner, ITUNES_NS, "email", text_content=OWNER_EMAIL)
-        
+
         # Image
-        self.xml.add_ns_element(channel, ITUNES_NS, "image", href=str(self.podcast.image))
-        
+        self.xml.add_ns_element(
+            channel, ITUNES_NS, "image", href=str(self.podcast.image)
+        )
+
         # Category - использует атрибут text, не текстовое содержимое
-        category = self.xml.add_ns_element(channel, ITUNES_NS, "category", text=self.podcast.category)
+        category = self.xml.add_ns_element(
+            channel, ITUNES_NS, "category", text=self.podcast.category
+        )
         if self.podcast.sub_category:
-            self.xml.add_ns_element(category, ITUNES_NS, "category", text=self.podcast.sub_category)
-        
+            self.xml.add_ns_element(
+                category, ITUNES_NS, "category", text=self.podcast.sub_category
+            )
+
         # Funding
         if FUNDING_URL:
             self.xml.add_ns_element(
-                channel, ITUNES_NS, "funding",
+                channel,
+                ITUNES_NS,
+                "funding",
                 text_content="Поддержите обновление подкаста",
-                url=FUNDING_URL
+                url=FUNDING_URL,
             )
-    
+
     def _add_episodes(self, channel: ET.Element):
         """Add episode items to channel"""
         for ep in self.episodes:
             item = self.xml.add_element(channel, "item")
-            
+
             self.xml.add_element(item, "title", text_content=ep.anons)
             self.xml.add_element(item, "description", text_content=ep.description)
             self.xml.add_element(item, "guid", text_content=str(ep.id))
-            self.xml.add_element(item, "pubDate", text_content=self._format_pub_date(ep))
-            
+            self.xml.add_element(
+                item, "pubDate", text_content=self._format_pub_date(ep)
+            )
+
             # Enclosure
             self.xml.add_element(
-                item, "enclosure",
+                item,
+                "enclosure",
                 url=ep.media_url,
                 length=str(ep.media_size),
-                type="audio/mpeg"
+                type="audio/mpeg",
             )
-            
+
             # iTunes episode metadata
             duration_str = str(timedelta(seconds=ep.duration))
-            self.xml.add_ns_element(item, ITUNES_NS, "duration", text_content=duration_str)
+            self.xml.add_ns_element(
+                item, ITUNES_NS, "duration", text_content=duration_str
+            )
             self.xml.add_ns_element(item, ITUNES_NS, "image", href=ep.picture_url)
-    
+
     # TODO
     # Для эпизодов вышедших не в текущий день api возвращает дату без времени
     # Эпизоды одного подкаста вышедшие в один день могут сортироваться неправильно.
     def _format_pub_date(self, episode: EpisodeModel) -> str:
         """Format episode publication date"""
         pub_date = episode.published
-        
+
         return format_datetime(pub_date.astimezone(pytz.timezone(TIMEZONE)))
 
 
@@ -218,15 +238,15 @@ def parse_api_date(api_response: str) -> datetime:
     except ValueError:
         today = datetime.now(pytz.timezone(TIMEZONE)).date()
         time_object = datetime.strptime(api_response, "%H:%M").time()
-        return pytz.timezone(TIMEZONE).localize(
-            datetime.combine(today, time_object)
-        )
+        return pytz.timezone(TIMEZONE).localize(datetime.combine(today, time_object))
 
 
 async def get_media_size_async(session: aiohttp.ClientSession, url: str) -> int:
     """Асинхронно получает размер медиафайла через HEAD запрос"""
     try:
-        async with session.head(url, allow_redirects=True, timeout=aiohttp.ClientTimeout(total=5)) as response:
+        async with session.head(
+            url, allow_redirects=True, timeout=aiohttp.ClientTimeout(total=5)
+        ) as response:
             if response.status == 200:
                 content_length = response.headers.get("Content-Length")
                 if not content_length:
@@ -249,58 +269,73 @@ async def get_multiple_media_sizes(urls: List[str]) -> dict:
         except Exception as e:
             logger.error(f"Error getting media size: {e}")
             return (url, None)
-    
+
     async with aiohttp.ClientSession() as session:
         tasks = [safe_get_size(session, url) for url in urls]
         results = await asyncio.gather(*tasks)
         return dict(results)
 
 
-def fetch_raw_episodes(podcast:PodcastModel, limit=20):
-    variables = {
-        "brandId": podcast.brand_id,
-        "page": 1,
-        "first": limit,
-        "order": "DESC",
-    }
+EPISODE_FIELDS = """
+id
+title
+number
+season {
+    number
+}
+status {
+    enum
+}
+description
+airDate
+publicationDate
+audio {
+    duration
+    publicId
+}
+"""
 
-    query = """
-    query FilterEpisodes(
-        $brandId: Int
-        $seasonId: Int
-        $page: Int
-        $first: Int!
-        $order: SortOrder = DESC
-    ) {
-        episodesFilter(
-            brand_id: $brandId
-            season_id: $seasonId
-            first: $first
-            page: $page
-            orderBy: { column: EPISODES_AIR_DATE, order: $order }
-        ) {
+# Объединённый запрос: за один HTTP-вызов тянет и список эпизодов подкаста
+# (brand.podcastMaterials), и фильтр эпизодов (episodesFilter), и тип бренда.
+# Для брендов типа Radiobroadcast работает episodesFilter,
+# для нативных подкастов (тип Podcast) — podcastMaterials.
+COMBINED_QUERY = """query CombinedEpisodes(
+    $brandId: Int!
+    $page: Int = 1
+    $first: Int!
+    $order: SortOrder = DESC
+) {
+    brand(id: $brandId) {
+        type {
+            enum
+        }
+        podcastMaterials(first: $first, page: $page) {
             data {
                 ... on Episode {
-                    id
-                    title
-                    status {
-					    enum	
-                    }
-                    description
-                    airDate
-                    publicationDate
-                    audio {
-                        duration
-                        publicId
-                    }
+__EPISODE_FIELDS__
                 }
             }
         }
     }
-    """
+    episodesFilter(
+        brand_id: $brandId
+        first: $first
+        page: $page
+        orderBy: { column: EPISODES_AIR_DATE, order: $order }
+    ) {
+        data {
+            ... on Episode {
+__EPISODE_FIELDS__
+            }
+        }
+    }
+}""".replace("__EPISODE_FIELDS__", EPISODE_FIELDS)
 
+
+def graphql_request(operation_name: str, query: str, variables: dict) -> dict:
+    """Send a GraphQL request to smotrim.ru API"""
     body_dict = {
-        "operationName": "FilterEpisodes",
+        "operationName": operation_name,
         "variables": variables,
         "query": query,
     }
@@ -311,7 +346,10 @@ def fetch_raw_episodes(podcast:PodcastModel, limit=20):
     vars_str = json.dumps(variables, separators=(",", ":"))
     vars_hash = hashlib.md5(vars_str.encode()).hexdigest()
 
-    url = f"https://apis.smotrim.ru/graphql?page=FilterEpisodes&body={body_hash}&vars={vars_hash}"
+    url = (
+        f"https://apis.smotrim.ru/graphql?page={operation_name}"
+        f"&body={body_hash}&vars={vars_hash}"
+    )
 
     response = requests.post(
         url,
@@ -325,46 +363,86 @@ def fetch_raw_episodes(podcast:PodcastModel, limit=20):
         timeout=10,
     )
 
-    data = response.json()
-    if "data" not in data or "episodesFilter" not in data["data"]:
+    return response.json()
+
+
+def filter_episodes_with_audio(episodes: list) -> list:
+    """Оставляем эпизоды, у которых есть airDate и audio"""
+    return [
+        e
+        for e in episodes
+        if e.get("airDate") is not None and e.get("audio") is not None
+    ]
+
+
+def enrich_with_mp3(episodes: list):
+    """Дополняет каждый эпизод mp3 ссылкой через player-api"""
+    for ep in episodes:
+        audio = ep.get("audio")
+        if not audio or not audio.get("publicId"):
+            continue
+
+        audio_id = audio["publicId"]
+        try:
+            r = requests.get(
+                f"https://player-api.smotrim.ru/api/v1/audio/{audio_id}",
+                timeout=10,
+            )
+            r.raise_for_status()
+            audio_data = r.json().get("data", {})
+            audio["mp3"] = audio_data.get("streams", {}).get("mp3")
+        except Exception as ex:
+            logger.warning(
+                f"Failed to get audio URL for episode {ep.get('id')}: {ex}"
+            )
+
+
+def fetch_raw_episodes(podcast: PodcastModel, limit=20):
+    variables = {
+        "brandId": podcast.brand_id,
+        "page": 1,
+        "first": limit,
+        "order": "DESC",
+    }
+
+    data = graphql_request("CombinedEpisodes", COMBINED_QUERY, variables)
+
+    if "data" not in data:
         logger.error(f"Invalid GraphQL response structure for {podcast.title}")
-        return [], 0
+        return []
 
-    episodes_filter = data["data"]["episodesFilter"]
-    
-    if "data" in episodes_filter:
-        # оставляем эпизоды с airDate
-        episodes = [e for e in episodes_filter["data"] if e.get("airDate") is not None and e.get("audio") is not None]
+    payload = data["data"]
+    brand = payload.get("brand") or {}
+    brand_type = (brand.get("type") or {}).get("enum")
+    podcast_materials = (brand.get("podcastMaterials") or {}).get("data") or []
 
-        for ep in episodes:
-            audio = ep.get("audio")
-            if audio and audio.get("publicId"):
-                audio_id = audio["publicId"]
-                # Получаем json с mp3 ссылкой
-                try:
-                    r = requests.get(f"https://player-api.smotrim.ru/api/v1/audio/{audio_id}", timeout=10)
-                    r.raise_for_status()
-                    audio_data = r.json().get("data", {})
-                    ep["audio"]["mp3"] = audio_data.get("streams", {}).get("mp3")
-                except Exception as ex:
-                    logger.warning(f"Failed to get audio URL for episode {ep.get('id')}: {ex}")
-                    ep["audio_url"] = None
-            else:
-                ep["audio_url"] = None
+    if podcast_materials:
+        logger.debug(
+            f"{podcast.title}: brand type {brand_type}, using podcastMaterials"
+        )
+        return filter_episodes_with_audio(podcast_materials)
 
-        episodes_filter = episodes
-                             
-    return episodes_filter
+    episodes_filter = (payload.get("episodesFilter") or {}).get("data") or []
+    logger.debug(
+        f"{podcast.title}: brand type {brand_type}, using episodesFilter"
+    )
+    return filter_episodes_with_audio(episodes_filter)
 
 
 def process_raw_episodes(
     raw_episodes: List[dict], podcast: PodcastModel
 ) -> List[EpisodeModel]:
     episodes = []
-    
+
+    enrich_with_mp3(raw_episodes)
+    episodes_with_mp3 = [e for e in raw_episodes if e.get("audio", {}).get("mp3")]
+    if not episodes_with_mp3:
+        logger.warning(f"No episodes with mp3 stream for {podcast.title}")
+        return []
+
     # Собираем URL для параллельной обработки
-    media_urls = [e["audio"]["mp3"] for e in raw_episodes]
-    
+    media_urls = [e["audio"]["mp3"] for e in episodes_with_mp3]
+
     # Получаем размеры параллельно
     logger.debug(f"Fetching sizes for {len(media_urls)} episodes...")
     try:
@@ -373,23 +451,24 @@ def process_raw_episodes(
         logger.error(f"Failed to fetch media sizes: {e}")
         return []
     logger.debug(f"Sizes fetched")
-    
+
     # Обрабатываем эпизоды
-    for raw_ep in raw_episodes:
+    for raw_ep in episodes_with_mp3:
         media_url = raw_ep["audio"]["mp3"]
         media_size = media_sizes.get(media_url)
-        #logger.debug(f"image: {podcast.image}")
+        # logger.debug(f"image: {podcast.image}")
 
         if not media_size or media_size <= 0:
-            media_size = 0 
-            logger.warning(f"Episode {raw_ep['id']} (media_url: {media_url}) - invalid or missing media size")
-            
+            media_size = 0
+            logger.warning(
+                f"Episode {raw_ep['id']} (media_url: {media_url}) - invalid or missing media size"
+            )
+
         try:
             description = raw_ep["description"] or ""
             ep = EpisodeModel(
                 id=raw_ep["id"],
                 brand_id=podcast.brand_id,
-                rubric_id=podcast.rubric_id,
                 title=raw_ep["title"],
                 published=datetime.strptime(raw_ep["airDate"], "%Y-%m-%dT%H:%M:%S%z"),
                 duration=raw_ep["audio"]["duration"],
@@ -416,10 +495,13 @@ def generate_podcast_feed_xml(
 
 
 def generate_podcast_feed(podcast: PodcastModel) -> str:
-    if not (podcast.brand_id or podcast.rubric_id):
-        raise ValueError("Neither brand_id nor rubric_id is provided")
+    if not podcast.brand_id:
+        raise ValueError("brand_id is not provided")
 
     raw_episodes = fetch_raw_episodes(podcast)
+    if len(raw_episodes) == 0:
+        logger.warning("Episodes list is empty")
+
     episodes = process_raw_episodes(raw_episodes, podcast)
 
     return generate_podcast_feed_xml(podcast, episodes)
@@ -431,11 +513,7 @@ def write_podcast_feed_to_file(podcast: PodcastModel, feed_str: str):
         with open(filename, "w", encoding="utf-8") as file:
             file.write(feed_str)
 
-        id = podcast.brand_id
-        if podcast.rubric_id:
-            id = podcast.rubric_id
-
-        logger.info(f"-- {id:<6} {podcast.title:<24} \t {filename}")
+        logger.info(f"-- {podcast.brand_id:<6} {podcast.title:<24} \t {filename}")
     except Exception as e:
         logger.error(f"Error processing podcast {podcast.title}: {e}")
 
