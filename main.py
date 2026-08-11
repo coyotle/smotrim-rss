@@ -2,6 +2,7 @@ import asyncio
 import hashlib
 import json
 import locale
+import os
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
@@ -88,6 +89,7 @@ class EpisodeModel(BaseModel):
     duration: int
     media_url: str
     media_size: int
+    media_type: str = "audio/mpeg"
     picture_url: str
 
 
@@ -212,7 +214,7 @@ class PodcastFeedGenerator:
                 "enclosure",
                 url=ep.media_url,
                 length=str(ep.media_size),
-                type="audio/mpeg",
+                type=ep.media_type,
             )
 
             # iTunes episode metadata
@@ -293,6 +295,12 @@ audio {
     duration
     publicId
 }
+fullVideo {
+    ... on Video {
+        publicId
+        duration
+    }
+}
 """
 
 # Объединённый запрос: за один HTTP-вызов тянет и список эпизодов подкаста
@@ -366,12 +374,13 @@ def graphql_request(operation_name: str, query: str, variables: dict) -> dict:
     return response.json()
 
 
-def filter_episodes_with_audio(episodes: list) -> list:
-    """Оставляем эпизоды, у которых есть airDate и audio"""
+def filter_episodes_with_stream(episodes: list) -> list:
+    """Оставляем эпизоды с airDate и хотя бы одним источником (аудио или видео)"""
     return [
         e
         for e in episodes
-        if e.get("airDate") is not None and e.get("audio") is not None
+        if e.get("airDate") is not None
+        and (e.get("audio") or (e.get("fullVideo") or {}).get("publicId"))
     ]
 
 
@@ -394,6 +403,30 @@ def enrich_with_mp3(episodes: list):
         except Exception as ex:
             logger.warning(
                 f"Failed to get audio URL for episode {ep.get('id')}: {ex}"
+            )
+
+
+def enrich_video_with_m3u8(episodes: list):
+    """Дополняет видео-эпизоды ссылкой на HLS-плейлист через player-api"""
+    for ep in episodes:
+        if ep.get("audio"):
+            continue
+        video = ep.get("fullVideo") or {}
+        if not video.get("publicId"):
+            continue
+
+        video_id = video["publicId"]
+        try:
+            r = requests.get(
+                f"https://player-api.smotrim.ru/api/v1/video/{video_id}",
+                timeout=10,
+            )
+            r.raise_for_status()
+            video_data = r.json().get("data", {})
+            video["m3u8"] = video_data.get("streams", {}).get("m3u8")
+        except Exception as ex:
+            logger.warning(
+                f"Failed to get video URL for episode {ep.get('id')}: {ex}"
             )
 
 
@@ -420,13 +453,13 @@ def fetch_raw_episodes(podcast: PodcastModel, limit=20):
         logger.debug(
             f"{podcast.title}: brand type {brand_type}, using podcastMaterials"
         )
-        return filter_episodes_with_audio(podcast_materials)
+        return filter_episodes_with_stream(podcast_materials)
 
     episodes_filter = (payload.get("episodesFilter") or {}).get("data") or []
     logger.debug(
         f"{podcast.title}: brand type {brand_type}, using episodesFilter"
     )
-    return filter_episodes_with_audio(episodes_filter)
+    return filter_episodes_with_stream(episodes_filter)
 
 
 def process_raw_episodes(
@@ -435,28 +468,51 @@ def process_raw_episodes(
     episodes = []
 
     enrich_with_mp3(raw_episodes)
-    episodes_with_mp3 = [e for e in raw_episodes if e.get("audio", {}).get("mp3")]
-    if not episodes_with_mp3:
-        logger.warning(f"No episodes with mp3 stream for {podcast.title}")
+    enrich_video_with_m3u8(raw_episodes)
+
+    audio_episodes = [e for e in raw_episodes if (e.get("audio") or {}).get("mp3")]
+    video_episodes = [
+        e
+        for e in raw_episodes
+        if not (e.get("audio") or {}).get("mp3")
+        and (e.get("fullVideo") or {}).get("m3u8")
+    ]
+
+    if not audio_episodes and not video_episodes:
+        logger.warning(f"No episodes with media stream for {podcast.title}")
         return []
 
-    # Собираем URL для параллельной обработки
-    media_urls = [e["audio"]["mp3"] for e in episodes_with_mp3]
+    # Получаем размеры mp3 параллельно
+    media_urls = [e["audio"]["mp3"] for e in audio_episodes]
+    media_sizes = {}
+    if media_urls:
+        logger.debug(f"Fetching sizes for {len(media_urls)} episodes...")
+        try:
+            media_sizes = asyncio.run(get_multiple_media_sizes(media_urls))
+        except Exception as e:
+            logger.error(f"Failed to fetch media sizes: {e}")
+            return []
+        logger.debug(f"Sizes fetched")
 
-    # Получаем размеры параллельно
-    logger.debug(f"Fetching sizes for {len(media_urls)} episodes...")
-    try:
-        media_sizes = asyncio.run(get_multiple_media_sizes(media_urls))
-    except Exception as e:
-        logger.error(f"Failed to fetch media sizes: {e}")
-        return []
-    logger.debug(f"Sizes fetched")
+    def build_episode(raw_ep, media_url, media_size, media_type, duration):
+        description = raw_ep["description"] or ""
+        return EpisodeModel(
+            id=raw_ep["id"],
+            brand_id=podcast.brand_id,
+            title=raw_ep["title"],
+            published=datetime.strptime(raw_ep["airDate"], "%Y-%m-%dT%H:%M:%S%z"),
+            duration=duration,
+            anons=raw_ep["title"],
+            description=f"{description}",
+            media_url=media_url,
+            media_size=media_size,
+            media_type=media_type,
+            picture_url=str(podcast.image),
+        )
 
-    # Обрабатываем эпизоды
-    for raw_ep in episodes_with_mp3:
+    for raw_ep in audio_episodes:
         media_url = raw_ep["audio"]["mp3"]
         media_size = media_sizes.get(media_url)
-        # logger.debug(f"image: {podcast.image}")
 
         if not media_size or media_size <= 0:
             media_size = 0
@@ -465,20 +521,31 @@ def process_raw_episodes(
             )
 
         try:
-            description = raw_ep["description"] or ""
-            ep = EpisodeModel(
-                id=raw_ep["id"],
-                brand_id=podcast.brand_id,
-                title=raw_ep["title"],
-                published=datetime.strptime(raw_ep["airDate"], "%Y-%m-%dT%H:%M:%S%z"),
-                duration=raw_ep["audio"]["duration"],
-                anons=raw_ep["title"],
-                description=f"{description}",
-                media_url=media_url,
-                media_size=media_size,
-                picture_url=str(podcast.image),
+            episodes.append(
+                build_episode(
+                    raw_ep,
+                    media_url,
+                    media_size,
+                    "audio/mpeg",
+                    raw_ep["audio"]["duration"],
+                )
             )
-            episodes.append(ep)
+        except Exception as e:
+            logger.warning(f"Skipping episode {raw_ep['id']} - validation error: {e}")
+            continue
+
+    for raw_ep in video_episodes:
+        duration = (raw_ep.get("fullVideo") or {}).get("duration")
+        try:
+            episodes.append(
+                build_episode(
+                    raw_ep,
+                    raw_ep["fullVideo"]["m3u8"],
+                    0,
+                    "application/vnd.apple.mpegurl",
+                    round(duration) if duration else 0,
+                )
+            )
         except Exception as e:
             logger.warning(f"Skipping episode {raw_ep['id']} - validation error: {e}")
             continue
@@ -510,6 +577,13 @@ def generate_podcast_feed(podcast: PodcastModel) -> str:
 def write_podcast_feed_to_file(podcast: PodcastModel, feed_str: str):
     filename = podcast.feed
     try:
+        # Не затираем существующий feed, если новых эпизодов нет
+        if feed_str.count("<item>") == 0 and os.path.exists(filename):
+            logger.warning(
+                f"Skip empty feed for {podcast.title}, keeping existing {filename}"
+            )
+            return
+
         with open(filename, "w", encoding="utf-8") as file:
             file.write(feed_str)
 
@@ -526,6 +600,38 @@ def create_station_feeds(station: StationModel):
             write_podcast_feed_to_file(podcast, feed_str)
         except Exception as e:
             logger.error(f'Can`t create feed for "{podcast.title}": {e}')
+
+
+def write_opml(stations_data: StationsDataModel):
+    """Генерирует podcasts.opml.xml из списка подкастов"""
+    lines = []
+    lines.append('<?xml version="1.0" encoding="UTF-8" standalone="no" ?>')
+    lines.append('<opml version="2.0">')
+    lines.append('\t<head>')
+    lines.append('\t\t<title>Подкасты платформы Смотрим</title>')
+    lines.append(
+        '\t\t<dateCreated>'
+        + datetime.now().strftime("%d %b %y %H:%M:%S +0000")
+        + "</dateCreated>"
+    )
+    lines.append("\t</head>")
+    lines.append("\t<body>")
+    for station in stations_data.stations:
+        lines.append(f'\t\t<outline text="{station.name}">')
+        for podcast in station.podcasts:
+            xml_url = "https://rss.coyotle.ru/" + podcast.feed.replace("docs/", "")
+            lines.append(
+                f'\t\t\t<outline text="{podcast.title}" type="rss" '
+                f'xmlUrl="{xml_url}" htmlUrl="{podcast.website}"/>'
+            )
+        lines.append("\t\t</outline>")
+    lines.append("\t</body>")
+    lines.append("</opml>")
+
+    with open("docs/podcasts.opml.xml", "w", encoding="utf-8") as file:
+        file.write("\n".join(lines) + "\n")
+
+    logger.info("OPML file updated: docs/podcasts.opml.xml")
 
 
 def main():
@@ -547,6 +653,8 @@ def main():
     for station in stations_data.stations:
         logger.info(f"- {station.name}")
         create_station_feeds(station)
+
+    write_opml(stations_data)
 
 
 if __name__ == "__main__":

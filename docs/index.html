@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="p-3">
-      <h1>Подкасты радиостанций Вести, Маяк, Россия, Культура</h1>
+      <h1>Подкасты радиостанций Вести ФМ, Маяк, Радио России, Соловьёв LIVE</h1>
       <div class="p-3 bg-body rounded fst-italic">
         Гос радиостанции на данный момент (декабрь 2023 г.) прекратили поддержку
         RSS лент своих передач и переехали на платформу
@@ -27,9 +27,15 @@
       </div>
 
       <div class="p-3 rounded shadow-sm">
-        ⚠️ После обновления платформы smotrim.ru часть контента теперь предоставляется только в виде видеопотока (HLS/m3u8) без отдельного аудиофайла.
-        Для таких выпусков невозможно сформировать классическую RSS ленту.
-        Это ограничение связано с моделью распространения контента на стороне платформы и его не получится обойти в рамках данного проекта.
+        ⚠️ Часть выпусков на smotrim.ru публикуется только в виде видеопотока (HLS/m3u8) без отдельного аудиофайла.
+        Такие выпуски попадают в RSS как video-enclosure.
+        Большинство подкаст-плееров воспроизводят только аудио, поэтому видео-выпуски могут не проигрываться в приложении.
+      </div>
+
+      <div class="p-3 rounded shadow-sm">
+        🔄 Ссылки на некоторые ленты обновились (новое расположение
+        <code>podcast/{станция}/{id}.xml</code>). Если подписка перестала
+        обновляться — переподпишитесь на подкаст по актуальной ссылке ниже.
       </div>
 
       <div class="p-3 mb-3 rounded shadow-sm">
@@ -57,124 +63,108 @@
       <div class="px-3">
         <h2>Вести ФМ</h2>
         <ul>
-          <li><a href="https://rss.coyotle.ru/60977.xml">Альтера Парс</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/60977.xml">Альтера Парс</a></li>
           <li>
-            <a href="https://rss.coyotle.ru/amgorki.xml">Американские горки</a>
+            <a href="https://rss.coyotle.ru/podcast/vesti/63263.xml">Американские горки</a>
           </li>
-          <li><a href="https://rss.coyotle.ru/62330.xml">Большой формат</a></li>
-          <li><a href="https://rss.coyotle.ru/former.xml">Бывшие</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/62330.xml">Большой формат</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/62046.xml">Бывшие</a></li>
           <li>
-            <a href="https://rss.coyotle.ru/70198.xml">Внешний контур</a>
+            <a href="https://rss.coyotle.ru/podcast/vesti/70198.xml">Внешний контур</a>
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/vshkatulka.xml"
+            <a href="https://rss.coyotle.ru/podcast/vesti/62186.xml"
               >Восточная шкатулка</a
             >
           </li>
-          <li><a href="https://rss.coyotle.ru/65871.xml">Дневной рубеж</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/65871.xml">Дневной рубеж</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/62139.xml">Еврозона</a></li>
           <li>
-            <a href="https://rss.coyotle.ru/69811.xml">Дни и ночи войны</a>
-          </li>
-          <li><a href="https://rss.coyotle.ru/eurozone.xml">Еврозона</a></li>
-          <li>
-            <a href="https://rss.coyotle.ru/zheleznaya.xml">Железная логика</a>
+            <a href="https://rss.coyotle.ru/podcast/vesti/61016.xml">Железная логика</a>
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/illusion.xml">Иллюзия власти</a>
+            <a href="https://rss.coyotle.ru/podcast/vesti/67761.xml">Иллюзия власти</a>
           </li>
-          <li><a href="https://rss.coyotle.ru/61029.xml">Информбистро</a></li>
-          <li><a href="https://rss.coyotle.ru/vesti/69679.xml">Научный факт</a></li>
-          <li><a href="https://rss.coyotle.ru/natsvopros.xml">Нацвопрос</a></li>
-          <li><a href="https://rss.coyotle.ru/69169.xml">Наша Арктика</a></li>
-          <li><a href="https://rss.coyotle.ru/paralleli.xml">Параллели</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/61029.xml">Информбистро</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/69679.xml">Научный факт</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/61015.xml">Нацвопрос</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/61175.xml">Параллели</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/68922.xml">Рулевой</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/64392.xml">Традиции</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/69014.xml">Угол зрения</a></li>
           <li>
-            <a href="https://rss.coyotle.ru/povorotnavostok.xml"
-              >Поворот на Восток</a
+            <a href="https://rss.coyotle.ru/podcast/vesti/61007.xml">Формула смысла</a>
+          </li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/60950.xml">Хай-Тек</a></li>
+          <li>
+            <a href="https://rss.coyotle.ru/podcast/vesti/66024.xml">Штатный корреспондент</a>
+          </li>
+          <li><a href="https://rss.coyotle.ru/podcast/vesti/68185.xml">Энергономика</a></li>
+        </ul>
+
+        <h2>Соловьёв Live</h2>
+        <ul>
+          <li><a href="https://rss.coyotle.ru/podcast/soloviev/66924.xml">Соловьёв LIVE</a></li>
+          <li>
+            <a href="https://rss.coyotle.ru/podcast/soloviev/60948.xml"
+              >Полный контакт</a
             >
           </li>
-          <li><a href="https://rss.coyotle.ru/polekulikova.xml">Поле Куликова</a></li>
-          <li><a href="https://rss.coyotle.ru/vesti/68922.xml">Рулевой</a></li>
-          <li><a href="https://rss.coyotle.ru/64392.xml">Традиции</a></li>
-          <li><a href="https://rss.coyotle.ru/turhub.xml">Турецкий хаб</a></li>
-          <li><a href="https://rss.coyotle.ru/69014.xml">Угол зрения</a></li>
-          <li>
-            <a href="https://rss.coyotle.ru/formula.xml">Формула смысла</a>
-          </li>
-          <li><a href="https://rss.coyotle.ru/vesti/60950.xml">Хай-Тек</a></li>
-          <li>
-            <a href="https://rss.coyotle.ru/66024.xml">Штатный корреспондент</a>
-          </li>
-          <li><a href="https://rss.coyotle.ru/68185.xml">Энергономика</a></li>
         </ul>
 
         <h2>Маяк</h2>
         <ul>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/60200.xml">Белая студия</a>
+            <a href="https://rss.coyotle.ru/podcast/mayak/60200.xml">Белая студия</a>
           </li>
-          <li><a href="https://rss.coyotle.ru/mayak/65317.xml">МузДок</a></li>
+          <li><a href="https://rss.coyotle.ru/podcast/mayak/65317.xml">МузДок</a></li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/1641.xml"
+            <a href="https://rss.coyotle.ru/podcast/mayak/73273.xml"
               >Мужчина. Руководство по эксплуатации</a
             >
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/3041.xml">Не просто Мария</a>
+            <a href="https://rss.coyotle.ru/podcast/mayak/73178.xml">Не просто Мария</a>
           </li>
-
           <li>
-            <a href="https://rss.coyotle.ru/mayak/64495.xml"
+            <a href="https://rss.coyotle.ru/podcast/mayak/73358.xml"
+              >Обратная сторона музыки</a
+            >
+          </li>
+          <li>
+            <a href="https://rss.coyotle.ru/podcast/mayak/64495.xml"
               >Пойми себя, если сможешь</a
             >
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/58219.xml"
+            <a href="https://rss.coyotle.ru/podcast/mayak/58219.xml"
               >Сергей Стиллавин и его друзья</a
             >
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/69881.xml"
+            <a href="https://rss.coyotle.ru/podcast/mayak/69881.xml"
               >Трудности перехода</a
             >
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/62250.xml">Физики и лирики</a>
+            <a href="https://rss.coyotle.ru/podcast/mayak/62250.xml">Физики и лирики</a>
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/mayak/67656.xml"
+            <a href="https://rss.coyotle.ru/podcast/mayak/67656.xml"
               >Хорошо темперированный эфир</a
-            >
-          </li>
-          <li>
-            <a href="https://rss.coyotle.ru/mayak/5382.xml"
-              >Обратная сторона музыки</a
             >
           </li>
         </ul>
         <h2>Радио России</h2>
         <ul>
           <li>
-            <a href="https://rss.coyotle.ru/radiorus/65486.xml"
+            <a href="https://rss.coyotle.ru/podcast/radiorus/65486.xml"
               >КультБригада: слово, смысл, литература</a
             >
           </li>
           <li>
-            <a href="https://rss.coyotle.ru/radiorus/63253.xml"
+            <a href="https://rss.coyotle.ru/podcast/radiorus/63253.xml"
               >Российский радиоуниверситет</a
-            >
-          </li>
-          <li>
-            <a href="https://rss.coyotle.ru/radiorus/62853.xml"
-              >Театр у микрофона</a
-            >
-          </li>
-        </ul>
-        <h2>Соловьёв Live</h2>
-        <ul>
-          <li><a href="https://rss.coyotle.ru/66924.xml">Соловьёв LIVE</a></li>
-          <li>
-            <a href="https://rss.coyotle.ru/soloviev/60948.xml"
-              >Полный контакт</a
             >
           </li>
         </ul>

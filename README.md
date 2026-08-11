@@ -7,9 +7,13 @@
 </p>
 
 > [!NOTE]
-> Часть контента на smotrim.ru теперь предоставляется только в виде видеопотока (HLS/m3u8) без отдельного аудиофайла.
-> Для таких выпусков невозможно сформировать классическую RSS ленту.
-> Это ограничение связано с моделью распространения контента на стороне платформы и его не получится обойти в рамках данного проекта.
+> Часть выпусков на smotrim.ru публикуется только в виде видеопотока (HLS/m3u8) без отдельного аудиофайла.
+> Такие выпуски попадают в RSS как video-enclosure (`application/vnd.apple.mpegurl`).
+> Большинство подкаст-плееров воспроизводят только аудио, поэтому видео-выпуски могут не проигрываться в приложении.
+
+> [!WARNING]
+> Ссылки на некоторые ленты обновились (новое расположение `docs/podcast/{станция}/{brand_id}.xml`).
+> Если подписка перестала обновляться — переподпишитесь на подкаст по актуальной ссылке ниже.
 
 
 ## Создание RSS лент самостоятельно
@@ -22,7 +26,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Файлы RSS будут созданы в директории `docs/`
+Файлы RSS будут созданы в директории `docs/podcast/{станция}/{brand_id}.xml`
 
 ## RSS ленты
 
@@ -34,55 +38,49 @@ python main.py
 
 #### Вести ФМ
 
-- [Альтера Парс](https://rss.coyotle.ru/60977.xml)
-- [Американские горки](https://rss.coyotle.ru/amgorki.xml)
-- [Большой формат](https://rss.coyotle.ru/62330.xml)
-- [Бывшие](https://rss.coyotle.ru/former.xml)
-- [Внешний контур](https://rss.coyotle.ru/70198.xml)
-- [Восточная шкатулка](https://rss.coyotle.ru/vshkatulka.xml)
-- [Дневной рубеж](https://rss.coyotle.ru/65871.xml)
-- [Дни и ночи войны](https://rss.coyotle.ru/69811.xml)
-- [Еврозона](https://rss.coyotle.ru/eurozone.xml)
-- [Железная логика](https://rss.coyotle.ru/zheleznaya.xml)
-- [Иллюзия власти](https://rss.coyotle.ru/illusion.xml)
-- [Информбистро](https://rss.coyotle.ru/61029.xml)
-- [Научный факт](https://rss.coyotle.ru/vesti/69679.xml)
-- [Нацвопрос](https://rss.coyotle.ru/natsvopros.xml)
-- [Наша Арктика](https://rss.coyotle.ru/69169.xml)
-- [Параллели](https://rss.coyotle.ru/paralleli.xml)
-- [Поворот на Восток](https://rss.coyotle.ru/povorotnavostok.xml)
-- [Поле Куликова](https://rss.coyotle.ru/polekulikova.xml)
-- [Рулевой](https://rss.coyotle.ru/vesti/68922.xml)
-- [Традиции](https://rss.coyotle.ru/64392.xml)
-- [Турецкий хаб](https://rss.coyotle.ru/turhub.xml)
-- [Угол зрения](https://rss.coyotle.ru/69014.xml)
-- [Формула смысла](https://rss.coyotle.ru/formula.xml)
-- [Хай-Тек](https://rss.coyotle.ru/vesti/60950.xml)
-- [Штатный корреспондент](https://rss.coyotle.ru/66024.xml)
-- [Энергономика](https://rss.coyotle.ru/68185.xml)
+- [Альтера Парс](https://rss.coyotle.ru/podcast/vesti/60977.xml)
+- [Американские горки](https://rss.coyotle.ru/podcast/vesti/63263.xml)
+- [Большой формат](https://rss.coyotle.ru/podcast/vesti/62330.xml)
+- [Бывшие](https://rss.coyotle.ru/podcast/vesti/62046.xml)
+- [Внешний контур](https://rss.coyotle.ru/podcast/vesti/70198.xml)
+- [Восточная шкатулка](https://rss.coyotle.ru/podcast/vesti/62186.xml)
+- [Дневной рубеж](https://rss.coyotle.ru/podcast/vesti/65871.xml)
+- [Еврозона](https://rss.coyotle.ru/podcast/vesti/62139.xml)
+- [Железная логика](https://rss.coyotle.ru/podcast/vesti/61016.xml)
+- [Иллюзия власти](https://rss.coyotle.ru/podcast/vesti/67761.xml)
+- [Информбистро](https://rss.coyotle.ru/podcast/vesti/61029.xml)
+- [Научный факт](https://rss.coyotle.ru/podcast/vesti/69679.xml)
+- [Нацвопрос](https://rss.coyotle.ru/podcast/vesti/61015.xml)
+- [Параллели](https://rss.coyotle.ru/podcast/vesti/61175.xml)
+- [Рулевой](https://rss.coyotle.ru/podcast/vesti/68922.xml)
+- [Традиции](https://rss.coyotle.ru/podcast/vesti/64392.xml)
+- [Угол зрения](https://rss.coyotle.ru/podcast/vesti/69014.xml)
+- [Формула смысла](https://rss.coyotle.ru/podcast/vesti/61007.xml)
+- [Хай-Тек](https://rss.coyotle.ru/podcast/vesti/60950.xml)
+- [Штатный корреспондент](https://rss.coyotle.ru/podcast/vesti/66024.xml)
+- [Энергономика](https://rss.coyotle.ru/podcast/vesti/68185.xml)
 
 #### Соловьёв Live
 
-- [Соловьёв LIVE](https://rss.coyotle.ru/66924.xml)
-- [Полный контакт](https://rss.coyotle.ru/soloviev/60948.xml)
+- [Соловьёв LIVE](https://rss.coyotle.ru/podcast/soloviev/66924.xml)
+- [Полный контакт](https://rss.coyotle.ru/podcast/soloviev/60948.xml)
 
 #### Маяк
 
-- [Белая студия](https://rss.coyotle.ru/mayak/60200.xml)
-- [МузДок](https://rss.coyotle.ru/mayak/65317.xml)
-- [Мужчина. Руководство по эксплуатации](https://rss.coyotle.ru/mayak/1641.xml)
-- [Не просто Мария](https://rss.coyotle.ru/mayak/3041.xml)
-- [Пойми себя, если сможешь](https://rss.coyotle.ru/mayak/64495.xml)
-- [Сергей Стиллавин и его друзья](https://rss.coyotle.ru/mayak/58219.xml)
-- [Трудности перехода](https://rss.coyotle.ru/mayak/69881.xml)
-- [Физики и лирики](https://rss.coyotle.ru/mayak/62250.xml)
-- [Хорошо темперированный эфир](https://rss.coyotle.ru/mayak/67656.xml)
-- [Обратная сторона музыки](https://rss.coyotle.ru/mayak/5382.xml)
+- [Белая студия](https://rss.coyotle.ru/podcast/mayak/60200.xml)
+- [МузДок](https://rss.coyotle.ru/podcast/mayak/65317.xml)
+- [Мужчина. Руководство по эксплуатации](https://rss.coyotle.ru/podcast/mayak/73273.xml)
+- [Не просто Мария](https://rss.coyotle.ru/podcast/mayak/73178.xml)
+- [Обратная сторона музыки](https://rss.coyotle.ru/podcast/mayak/73358.xml)
+- [Пойми себя, если сможешь](https://rss.coyotle.ru/podcast/mayak/64495.xml)
+- [Сергей Стиллавин и его друзья](https://rss.coyotle.ru/podcast/mayak/58219.xml)
+- [Трудности перехода](https://rss.coyotle.ru/podcast/mayak/69881.xml)
+- [Физики и лирики](https://rss.coyotle.ru/podcast/mayak/62250.xml)
+- [Хорошо темперированный эфир](https://rss.coyotle.ru/podcast/mayak/67656.xml)
 
 #### Радио России
 
-- [КультБригада: слово, смысл, литература](https://rss.coyotle.ru/radiorus/65486.xml)
-- [Российский радиоуниверситет](https://rss.coyotle.ru/radiorus/63253.xml)
-- [Театр у микрофона](https://rss.coyotle.ru/radiorus/62853.xml)
+- [КультБригада: слово, смысл, литература](https://rss.coyotle.ru/podcast/radiorus/65486.xml)
+- [Российский радиоуниверситет](https://rss.coyotle.ru/podcast/radiorus/63253.xml)
 
 P.S. Пишите, если хотите слушать еще какие-то подкасты с платформы "Смотрим".

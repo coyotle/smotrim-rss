@@ -9,7 +9,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/61016
-        feed: docs/zheleznaya.xml
+        feed: docs/podcast/vesti/61016.xml
         image: https://rss.coyotle.ru/images/61016_v1.jpg
 
       - title: Формула смысла
@@ -18,7 +18,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/61007
-        feed: docs/formula.xml
+        feed: docs/podcast/vesti/61007.xml
         image: https://rss.coyotle.ru/images/61007_v1.jpg
 
       - title: Американские горки
@@ -27,7 +27,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/63263
-        feed: docs/amgorki.xml
+        feed: docs/podcast/vesti/63263.xml
         image: https://rss.coyotle.ru/images/63263_v1.jpg
 
       - title: Еврозона
@@ -36,7 +36,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/62139
-        feed: docs/eurozone.xml
+        feed: docs/podcast/vesti/62139.xml
         image: https://rss.coyotle.ru/images/62139_v1.jpg
 
       - title: Бывшие
@@ -45,7 +45,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/62046
-        feed: docs/former.xml
+        feed: docs/podcast/vesti/62046.xml
         image: https://rss.coyotle.ru/images/62046_v1.jpg
 
       - title: Параллели
@@ -54,7 +54,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/61175
-        feed: docs/paralleli.xml
+        feed: docs/podcast/vesti/61175.xml
         image: https://rss.coyotle.ru/images/61175_v1.jpg
 
       - title: Восточная шкатулка
@@ -63,7 +63,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/62186
-        feed: docs/vshkatulka.xml
+        feed: docs/podcast/vesti/62186.xml
         image: https://rss.coyotle.ru/images/62186_v1.jpg
 
       - title: Нацвопрос
@@ -72,17 +72,8 @@ stations:
         category: News
         sub_category: Politics
         website: "https://smotrim.ru/brand/61015"
-        feed: docs/natsvopros.xml
+        feed: docs/podcast/vesti/61015.xml
         image: https://rss.coyotle.ru/images/61015_v1.jpg
-
-      - title: Поворот на Восток
-        description: "Ветер перемен дует с Востока: Азия становится ключевой геополитической частью света. Как будет выглядеть новый многополярный мир и какое место в нём займёт Россия? Поворачиваем на Восток вместе с китаеведом, публицистом Николаем Вавиловым."
-        brand_id: 68525
-        category: News
-        sub_category: Politics
-        website: https://smotrim.ru/brand/68525
-        feed: docs/povorotnavostok.xml
-        image: https://rss.coyotle.ru/images/68525_v1.jpg
 
       - title: Иллюзия власти
         description: "Авторская программа политолога, кандидата политических наук, члена-корреспондента Академии военных наук Сергея Судакова."
@@ -90,34 +81,8 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/67761
-        feed: docs/illusion.xml
+        feed: docs/podcast/vesti/67761.xml
         image: https://rss.coyotle.ru/images/67761_v1.jpg
-
-      - title: Турецкий хаб
-        description: "Еженедельная программа о том, что происходит в Турции и вокруг нее с Иваном Стародубцевым."
-        brand_id: 69703
-        category: News
-        sub_category: Politics
-        website: https://smotrim.ru/brand/69703
-        feed: docs/turhub.xml
-        image: https://rss.coyotle.ru/images/69703_v1.jpg
-
-      - title: Дни и ночи войны
-        description: "Истории подвигов и преодолений на фронте и в тылу в специальном проекте Андрея Светенко."
-        brand_id: 69811
-        category: History
-        website: https://smotrim.ru/brand/69811
-        feed: docs/69811.xml
-        image: https://rss.coyotle.ru/images/69811_v1.jpg
-
-      - title: Наша Арктика
-        description: "Программа о самом холодном регионе России, где решаются самые горячие проблемы современного мира с Маратом Сафаровым."
-        brand_id: 69169
-        category: News
-        sub_category: Politics
-        website: https://smotrim.ru/brand/69169
-        feed: docs/69169.xml
-        image: https://rss.coyotle.ru/images/69169_v1.jpg
 
       - title: Штатный корреспондент
         description: "Наблюдаем за политической жизнью США. Валентин Богданов про Америку из Америки."
@@ -125,7 +90,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/66024
-        feed: docs/66024.xml
+        feed: docs/podcast/vesti/66024.xml
         image: https://rss.coyotle.ru/images/66024_v1.jpg
 
       - title: Угол зрения
@@ -134,7 +99,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/69014
-        feed: docs/69014.xml
+        feed: docs/podcast/vesti/69014.xml
         image: https://rss.coyotle.ru/images/69014_v1.jpg
 
       - title: Традиции
@@ -143,17 +108,8 @@ stations:
         category: Society & Culture
         sub_category: Philosophy
         website: https://smotrim.ru/brand/64392
-        feed: docs/64392.xml
+        feed: docs/podcast/vesti/64392.xml
         image: https://rss.coyotle.ru/images/64392_v1.jpg
-
-      - title: Поле Куликова
-        description: 'Авторский стрим Дмитрия Куликова в программе "Соловьёв LIVE"'
-        rubric_id: 7261
-        category: News
-        sub_category: Politics
-        website: https://smotrim.ru/podcast/7261
-        feed: docs/polekulikova.xml
-        image: https://rss.coyotle.ru/images/7261_v1.jpg
 
       - title: Альтера Парс
         description: "У каждого режима – свой темперамент: от государств-экстравертов до стран-флегматиков. У каждого строя – своя натура: одни руководствуются логикой, другими управляют эмоции. Изучим их поведение, измерим самооценку. Психология международных отношений с Марией Киселевой."
@@ -161,7 +117,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/60977
-        feed: docs/60977.xml
+        feed: docs/podcast/vesti/60977.xml
         image: https://rss.coyotle.ru/images/60977_v1.jpg
 
       - title: Большой формат
@@ -170,7 +126,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/62330
-        feed: docs/62330.xml
+        feed: docs/podcast/vesti/62330.xml
         image: https://rss.coyotle.ru/images/62330_v1.jpg
 
       - title: Внешний контур
@@ -179,7 +135,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/70198
-        feed: docs/70198.xml
+        feed: docs/podcast/vesti/70198.xml
         image: https://rss.coyotle.ru/images/70198_v1.jpg
 
       - title: Энергономика
@@ -188,7 +144,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/68185
-        feed: docs/68185.xml
+        feed: docs/podcast/vesti/68185.xml
         image: https://rss.coyotle.ru/images/68185_v1.jpg
 
       - title: Дневной рубеж
@@ -197,7 +153,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/65871
-        feed: docs/65871.xml
+        feed: docs/podcast/vesti/65871.xml
         image: https://rss.coyotle.ru/images/65871_v1.jpg
 
       - title: Информбистро
@@ -206,7 +162,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/61029
-        feed: docs/61029.xml
+        feed: docs/podcast/vesti/61029.xml
         image: https://rss.coyotle.ru/images/61029_v1.jpg
 
       - title: Хай-Тек
@@ -215,7 +171,7 @@ stations:
         category: News
         sub_category: Tech News
         website: https://smotrim.ru/brand/60950
-        feed: docs/vesti/60950.xml
+        feed: docs/podcast/vesti/60950.xml
         image: https://rss.coyotle.ru/images/vesti/60950_v1.jpg
 
       - title: Рулевой
@@ -224,16 +180,16 @@ stations:
         category: News
         sub_category: Tech News
         website: https://smotrim.ru/brand/68922
-        feed: docs/vesti/68922.xml
+        feed: docs/podcast/vesti/68922.xml
         image: https://rss.coyotle.ru/images/vesti/68922_v1.jpg
 
       - title: Научный факт
-        description: 'Заметные события с точки зрения науки.'
+        description: "Заметные события с точки зрения науки."
         brand_id: 69679
         category: News
         sub_category: Tech News
         website: https://smotrim.ru/brand/69679
-        feed: docs/vesti/69679.xml
+        feed: docs/podcast/vesti/69679.xml
         image: https://rss.coyotle.ru/images/vesti/69679_v1.jpg
 
   - name: Маяк
@@ -245,7 +201,7 @@ stations:
         brand_id: 62250
         category: Society & Culture
         website: https://smotrim.ru/brand/62250
-        feed: docs/mayak/62250.xml
+        feed: docs/podcast/mayak/62250.xml
         image: https://rss.coyotle.ru/images/mayak/62250_v1.jpg
 
       - title: Белая студия
@@ -253,7 +209,7 @@ stations:
         brand_id: 60200
         category: Society & Culture
         website: https://smotrim.ru/brand/60200
-        feed: docs/mayak/60200.xml
+        feed: docs/podcast/mayak/60200.xml
         image: https://rss.coyotle.ru/images/mayak/60200_v1.jpg
 
       - title: Сергей Стиллавин и его друзья
@@ -261,7 +217,7 @@ stations:
         brand_id: 58219
         category: Society & Culture
         website: https://smotrim.ru/brand/58219
-        feed: docs/mayak/58219.xml
+        feed: docs/podcast/mayak/58219.xml
         image: https://rss.coyotle.ru/images/mayak/58219_v1.jpg
 
       - title: Трудности перехода
@@ -269,7 +225,7 @@ stations:
         brand_id: 69881
         category: Society & Culture
         website: https://smotrim.ru/brand/69881
-        feed: docs/mayak/69881.xml
+        feed: docs/podcast/mayak/69881.xml
         image: https://rss.coyotle.ru/images/mayak/69881_v1.jpg
 
       - title: Хорошо темперированный эфир
@@ -277,7 +233,7 @@ stations:
         brand_id: 67656
         category: Society & Culture
         website: https://smotrim.ru/brand/67656
-        feed: docs/mayak/67656.xml
+        feed: docs/podcast/mayak/67656.xml
         image: https://rss.coyotle.ru/images/mayak/67656_v1.jpg
 
       - title: Пойми себя, если сможешь
@@ -285,7 +241,7 @@ stations:
         brand_id: 64495
         category: Society & Culture
         website: https://smotrim.ru/brand/64495
-        feed: docs/mayak/64495.xml
+        feed: docs/podcast/mayak/64495.xml
         image: https://rss.coyotle.ru/images/mayak/64495_v1.jpg
 
       - title: МузДок
@@ -293,31 +249,31 @@ stations:
         brand_id: 65317
         category: Society & Culture
         website: https://smotrim.ru/brand/65317
-        feed: docs/mayak/65317.xml
+        feed: docs/podcast/mayak/65317.xml
         image: https://rss.coyotle.ru/images/mayak/65317_v1.jpg
 
       - title: Мужчина. Руководство по эксплуатации
         description: "Сергей Стиллавин, Витус, Виктория Колосова и межгалактический профессор Анатолий Добин обсуждают животрепещущие темы из раздела психологии."
-        rubric_id: 1641
+        brand_id: 73273
         category: Society & Culture
-        website: https://smotrim.ru/podcast/1641
-        feed: docs/mayak/1641.xml
+        website: https://smotrim.ru/brand/73273
+        feed: docs/podcast/mayak/73273.xml
         image: https://rss.coyotle.ru/images/mayak/1641_v1.jpg
 
       - title: Не просто Мария
         description: "Клинический психолог Мария Киселёва, вместе с Сергеем Стиллавиным, помогает слушателям разобраться в тех или иных жизненных вопросах и ситуациях."
-        rubric_id: 3041
+        brand_id: 73178
         category: Society & Culture
-        website: https://smotrim.ru/podcast/3041
-        feed: docs/mayak/3041.xml
+        website: https://smotrim.ru/brand/73178
+        feed: docs/podcast/mayak/73178.xml
         image: https://rss.coyotle.ru/images/mayak/3041_v1.jpg
 
       - title: Обратная сторона музыки
         description: "Как стать музыкантом, как полюбить классическую музыку, как написать хит, как устроен мир звукозаписи, почему мы вообще слушаем музыку – все тайны мира звука раскрывают музыковед, искусствовед и психолог Дина Кирнарская и Сергей Стиллавин."
-        rubric_id: 5382
+        brand_id: 73358
         category: Society & Culture
-        website: https://smotrim.ru/podcast/5382
-        feed: docs/mayak/5382.xml
+        website: https://smotrim.ru/brand/73358
+        feed: docs/podcast/mayak/73358.xml
         image: https://rss.coyotle.ru/images/mayak/5382_v1.jpg
 
   - name: Радио России
@@ -329,7 +285,7 @@ stations:
         brand_id: 63253
         category: Society & Culture
         website: https://smotrim.ru/brand/63253
-        feed: docs/radiorus/63253.xml
+        feed: docs/podcast/radiorus/63253.xml
         image: https://rss.coyotle.ru/images/radiorus/63253_v1.jpg
 
       - title: "КультБригада: слово, смысл, литература"
@@ -337,16 +293,8 @@ stations:
         brand_id: 65486
         category: Society & Culture
         website: https://smotrim.ru/brand/65486
-        feed: docs/radiorus/65486.xml
+        feed: docs/podcast/radiorus/65486.xml
         image: https://rss.coyotle.ru/images/radiorus/65486_v1.jpg
-
-      - title: "Театр у микрофона"
-        description: 'В эфире "Радио России" золотая коллекция радиоспектаклей из собрания Гостелерадиофонда. Спектакли озвучены известными артистами СССР и России.'
-        brand_id: 62853
-        category: Society & Culture
-        website: https://smotrim.ru/brand/62853
-        feed: docs/radiorus/62853.xml
-        image: https://rss.coyotle.ru/images/radiorus/62853_v1.jpg
 
   - name: Соловьёв LIVE
     id: 4
@@ -358,7 +306,7 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/66924
-        feed: docs/66924.xml
+        feed: docs/podcast/soloviev/66924.xml
         image: https://rss.coyotle.ru/images/66924_v1.jpg
 
       - title: Полный контакт
@@ -367,5 +315,5 @@ stations:
         category: News
         sub_category: Politics
         website: https://smotrim.ru/brand/60948
-        feed: docs/soloviev/60948.xml
+        feed: docs/podcast/soloviev/60948.xml
         image: https://rss.coyotle.ru/images/soloviev/60948_v1.jpg
