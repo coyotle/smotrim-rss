@@ -2,7 +2,7 @@
 <opml version="2.0">
 	<head>
 		<title>Подкасты платформы Смотрим</title>
-		<dateCreated>11 авг 26 21:22:57 +0000</dateCreated>
+		<dateCreated>28 сен 26 23:50:02 +0000</dateCreated>
 	</head>
 	<body>
 		<outline text="Вести ФМ">
@@ -47,6 +47,7 @@
 		<outline text="Соловьёв LIVE">
 			<outline text="Соловьёв LIVE" type="rss" xmlUrl="https://rss.coyotle.ru/podcast/soloviev/66924.xml" htmlUrl="https://smotrim.ru/brand/66924"/>
 			<outline text="Полный контакт" type="rss" xmlUrl="https://rss.coyotle.ru/podcast/soloviev/60948.xml" htmlUrl="https://smotrim.ru/brand/60948"/>
+			<outline text="Гаспарян" type="rss" xmlUrl="https://rss.coyotle.ru/podcast/soloviev/68730.xml" htmlUrl="https://smotrim.ru/brand/68730"/>
 		</outline>
 	</body>
 </opml>

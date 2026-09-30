@@ -317,3 +317,12 @@ stations:
         website: https://smotrim.ru/brand/60948
         feed: docs/podcast/soloviev/60948.xml
         image: https://rss.coyotle.ru/images/soloviev/60948_v1.jpg
+
+      - title: Гаспарян
+        description: "Авторская программа известного российского журналиста, радиоведущего, блогера, писателя, публициста и общественного деятеля Армена Гаспаряна. Его умение блестяще проводить исторические параллели поможет зрителям разобраться в текущих событиях, а подача материала всегда интересна, логична и эмоциональна."
+        brand_id: 68730
+        category: News
+        sub_category: Politics
+        website: https://smotrim.ru/brand/68730
+        feed: docs/podcast/soloviev/68730.xml
+        image: https://rss.coyotle.ru/images/soloviev/68730_v1.jpg
