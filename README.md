@@ -64,6 +64,7 @@ python main.py
 
 - [Соловьёв LIVE](https://rss.coyotle.ru/podcast/soloviev/66924.xml)
 - [Полный контакт](https://rss.coyotle.ru/podcast/soloviev/60948.xml)
+- [Гаспарян](https://rss.coyotle.ru/podcast/soloviev/68730.xml)
 
 #### Маяк
 
